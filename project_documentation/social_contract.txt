@@ -1,0 +1,22 @@
+Social Contract
+
+* No meetings in weekends
+* Try for RL meetings adjacent in time to classes.
+* Sprint start meetings on Friday afternoons typically
+* Sprint end meetings on Friday mornings typically
+* Typically virtual meetings
+
+* If one sees a message, try to respond fairly quickly (~15 min), 
+  the response can be an indication of when to expect an answer.
+
+* Free to choose pair programming or individual programming.
+
+* Unit testing strategy: TBD
+
+Tools:
+* version control: GitHub 
+* Sprintplanning: Trello
+* IDE: as preferred
+* Linter: TBD
+* communication and meetings: Discord
+* Language: likely candidates Python and/or Java. But depending on project.
