@@ -1,0 +1,23 @@
+what do I want to learn or understand better?
+	I want to:
+	* get a diploma indicating some experience with Agile work flow for job interviews
+	* extend my theoretical knowledge of Scrum and related Agile workflows
+	* discuss theoretically pros and cons practically and theroertically with different paths
+	* practically experiment with and develop my PO and Scrummaster skills
+
+how can I help someone else, or the entire team, to learn something new?
+	* hopefully with my practical experience from 20+ years in the industry in various roles related to development. 
+	Having seen both good and bad examples of Waterfall, Scrum, KIVP, Anarchy, ...
+	* focus on a long term perspective (in this case long term is 2 months, where I personally prefer the Kamprad definition of long term (100 years))
+	* Hopefully challenge ideas forcing thought through architectural choices
+	
+what is my contribution towards the team’s use of Scrum?
+	* experience
+	* depends on how we choose to use Scrum
+	
+what is my contribution towards the team’s deliveries?
+	* experience, balance between KIS, maintainability and extendibility
+	* testing
+	* documentation
+	* "customer"/usability focus.
+	* simple development.
