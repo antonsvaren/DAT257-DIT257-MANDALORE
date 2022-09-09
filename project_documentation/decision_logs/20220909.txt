@@ -1,0 +1,5 @@
+Decision log 20220909:
+We are starting with an app (and may in the future add servers and/or webfunctioanlity)
+
+1 SP is initially defined as a fourteenth of the sprint velocity in the beginning.
+1 man week = 2 SP
