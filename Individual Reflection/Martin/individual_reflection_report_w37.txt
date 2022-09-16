@@ -1,0 +1,17 @@
+what do I want to learn or understand better?
+	how to make all members want to contribute in the same direction
+	How to be part of self organizing  team without taking it over nor not have anything to say.
+
+how can I help someone else, or the entire team, to learn something new?
+	ask questions
+	bring in my experiences	
+	
+what is my contribution towards the team’s use of Scrum?
+	bring in my experiences	
+	
+what is my contribution towards the team’s deliveries?
+	* experience, balance between KIS, maintainability and extendibility
+	* testing
+	* documentation
+	* "customer"/usability focus.
+	* simple development.
