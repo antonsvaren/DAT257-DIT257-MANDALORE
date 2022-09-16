@@ -1,0 +1,28 @@
+Hanna presented her work with the GUI using figma.com
+
+Feedback
+* is home-page button needed
+	Decision: lets try it as is and decide later, maybe move it to the middle
+	
+* Reminder
+	* configuranility of reminders
+		* same reminders for all users 
+		* general for all
+	Decision: 
+		start with generic and add US for configurability
+* Map
+	* maybe include a map based forecast in the future
+* "..." icon
+	* is it intuitive for meaning next favourite?
+	Decision: replace with swipe
+	
+* visualization of sub services forecasts
+	* could be added when we have added more services besides SMHI
+	
+* Search button at bottom for all pages
+	
+* indication of certainty of forecast
+	* start with something simple 
+		* intervall to start with
+	Decision: let the GUI team play around and present something
+	
