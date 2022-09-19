@@ -61,4 +61,4 @@ Tools:
 * IDE: as preferred, but  mainly Android Studio
 * Linter: TBD
 * communication and meetings: Discord
-* Language: likely candidates Kotlin, Python and/or Java
+* Language: likely candidates Kotlin and/or Java
