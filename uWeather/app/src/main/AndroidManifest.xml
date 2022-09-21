@@ -12,7 +12,10 @@
         android:theme="@style/Theme.UWeather"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity">
+        </activity>
+        <activity
+            android:name=".LoadingActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.UWeather.NoActionBar">
