@@ -1,6 +1,6 @@
 Social Contract
 
-* No meetings in weekends
+* No meetings on weekends
 * Try for RL meetings adjacent in time to classes.
 * Sprint start meetings on Friday afternoons typically
 * Sprint end meetings on Friday mornings typically
@@ -13,10 +13,52 @@ Social Contract
 
 * Unit testing strategy: TBD
 
+
+* we will have sprinte review and retrospective at 13.00-14.00 on every comming friday
+* Sprint reviews and retrospective meetings
+	consists of two parts
+	Sprint Review: ~15 min and
+	Sprint Retrospective:  (please prepare) ~40 min
+
+* During sprint review part we
+	Present what we as a team has accomplished, describe what user values we believe we provide.
+	get feedback from PO and present Stakeholders
+
+* During Sprint Retrospective part we discuss (please come prepared)
+	What has worked?
+	Where have we had problems?
+	What should we continue doing?
+	What should we improve?
+	What should we stop doing
+	
+	One person takes notes that will be upladed to the repo and linked to in the assignment report.
+
+* we will have sprinte planning at 14.00-15.00 on every comming friday, during which we 
+	* review the Product Backlog ~5 min
+
+	* Groom the top items
+		Groom: 
+			break down User Stories to tasks that can be SP estimated
+			ensure SP and tasks follow INVEST.
+
+	* take groomed items summing up to ~14 SP and add to sprint backlog
+
+	* preliminary distribute tasks to all members, to ensure all have something to work on.
+
+* we will have "daily" scrums on tuesday and thurdays from 9.00 to 9.15
+	during "daily" scrums each person presents in about 2 min.
+	* What have I done recently
+	* What do I plan to do next
+	* Am I blocked and if so how
+
+* we will start meetings at the specified time and late commers will be miss the beginning
+
+* When we don't have anything to do or we don't know what to do, we report that in Discord tin order to let other help explain or find meaningful tasks
+
 Tools:
 * version control: GitHub 
 * Sprintplanning: Trello
-* IDE: as preferred
+* IDE: as preferred, but  mainly Android Studio
 * Linter: TBD
 * communication and meetings: Discord
-* Language: likely candidates Python and/or Java. But depending on project.
+* Language: likely candidates Kotlin and/or Java
