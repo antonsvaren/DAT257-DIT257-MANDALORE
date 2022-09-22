@@ -62,3 +62,6 @@ Tools:
 * Linter: TBD
 * communication and meetings: Discord
 * Language: likely candidates Kotlin and/or Java
+
+* Product owner: Anton
+* Scrum master : Martin
