@@ -1,25 +1,32 @@
 package dit257.mandalore.uweather
 
+import org.json.JSONObject
 import java.net.URL
+import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import java.util.concurrent.Future
 
-fun request(endpoint: String, command: (String) -> Any) {
-    Executors.newSingleThreadExecutor().execute {
-        try {
-            URL("https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/$endpoint").openStream()
-                .use {
-                    command(it.bufferedReader().readText())
-                }
-        } catch(e: Exception) {
-            command(e.message?: e.stackTraceToString())
+abstract class API {
+    companion object {
+        var current = JSONObject()
+        private val executor: ExecutorService = Executors.newCachedThreadPool()
+
+        private fun request(endpoint: String): Future<*>? {
+            return executor.submit {
+                current =
+                    JSONObject(URL("https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/$endpoint").openStream()
+                        .use {
+                            it.bufferedReader().readText()
+                        })
+            }
+        }
+
+        private fun geotypeRequest(endpoint: String): Future<*>? {
+            return request("geotype/$endpoint")
+        }
+
+        fun pointForecast(lon: Float, lat: Float): Future<*>? {
+            return geotypeRequest("point/lon/$lon/lat/$lat/data.json")
         }
     }
-}
-
-fun geotypeRequest(endpoint: String, command: (String) -> Any) {
-    request("geotype/$endpoint", command)
-}
-
-fun pointForecast(lon: Float, lat: Float, command: (String) -> Any) {
-    geotypeRequest("lon/$lon/lat/$lat/data.json", command)
 }

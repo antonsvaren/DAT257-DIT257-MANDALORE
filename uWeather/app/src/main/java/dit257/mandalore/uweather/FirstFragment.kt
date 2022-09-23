@@ -1,12 +1,14 @@
 package dit257.mandalore.uweather
 
 import android.os.Bundle
+import android.util.JsonReader
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import dit257.mandalore.uweather.databinding.FragmentFirstBinding
+import org.json.JSONObject
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -31,7 +33,10 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pointForecast(11.966667F, 57.7F) { text -> { binding.textviewFirst.text = text } }
+
+        binding.textviewFirst.text =
+            API.current.getJSONArray("timeSeries").getJSONObject(0).getJSONArray("parameters")
+                .getJSONObject(10).getJSONArray("values").getString(0)
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)

@@ -17,5 +17,7 @@ class LoadingActivity : AppCompatActivity() {
             startActivity(intent)
             finish();
         }, 2000)
+
+        API.pointForecast(11.966667F, 57.7F)?.get()
     }
 }
