@@ -6,10 +6,10 @@ class MockWeatherService : WeatherService("Mock", "") {
     override fun parseResponse(response: String) {}
 
     override fun update(lon: Float, lat: Float): Future<*>? {
-        return request("")
+        return null
     }
 
-    override fun getCurrentTemperature(): Double? {
+    override fun getCurrentTemperature(): Double {
         return 9214972148.12
     }
 }
