@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import dit257.mandalore.uweather.api.API
+import dit257.mandalore.uweather.api.WeatherService
 import dit257.mandalore.uweather.databinding.FragmentFirstBinding
 
 /**
@@ -32,11 +32,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mockWeatherService = MockWeatherService()
-        val smhiWeatherService = SMHIWeatherService()
         binding.textviewFirst.text =
-            "Mock Temperature: " + mockWeatherService.getTemperatureNextHour() +
-                    "\nSMHI Temperature: " + smhiWeatherService.getTemperatureNextHour()
+            WeatherService.services.first().getCurrentTemperature().toString()
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
