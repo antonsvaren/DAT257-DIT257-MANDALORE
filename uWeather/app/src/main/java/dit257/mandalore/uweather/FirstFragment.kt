@@ -33,7 +33,11 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.textviewFirst.text =
-            WeatherService.services.first().getCurrentTemperature().toString()
+            WeatherService.services.map { service ->
+                val name = service.name
+                val temperature = service.getCurrentTemperature()
+                "$name: $temperature"
+            }.joinToString("\n")
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)

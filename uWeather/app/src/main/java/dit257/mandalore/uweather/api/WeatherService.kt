@@ -1,32 +1,35 @@
 package dit257.mandalore.uweather.api
 
 import java.io.BufferedReader
+import java.io.IOException
 import java.net.URL
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
 
-abstract class WeatherService(private val api: String) {
+abstract class WeatherService(val name: String, private val api: String) {
     companion object {
-        val services = sequenceOf<WeatherService>(SMHIWeatherService())
+        val services = sequenceOf<WeatherService>(SMHIWeatherService(), MockWeatherService())
         private val executor: ExecutorService = Executors.newCachedThreadPool()
     }
-    
-    val responses = arrayListOf<Response>()
+
+    val responses = arrayListOf<Map<String, Double>>()
 
     abstract fun parseResponse(response: String)
     abstract fun update(lon: Float, lat: Float): Future<*>?
-
-    fun getCurrentTemperature(): Double? {
-        return responses.first()["t"]
-    }
+    abstract fun getCurrentTemperature(): Double?
 
     fun request(endpoint: String): Future<*> {
+        responses.clear()
         return executor.submit {
-            URL("$api/$endpoint").openStream()
-                .use {
-                    parseResponse(it.bufferedReader().use(BufferedReader::readText))
-                }
+            try {
+                URL("$api/$endpoint").openStream()
+                    .use {
+                        parseResponse(it.bufferedReader().use(BufferedReader::readText))
+                    }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
         }
     }
 }
