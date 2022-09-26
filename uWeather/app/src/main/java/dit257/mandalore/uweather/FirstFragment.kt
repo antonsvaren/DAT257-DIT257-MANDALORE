@@ -32,7 +32,11 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textviewFirst.text = API.responses.first()["t"].toString()
+        val mockWeatherService = MockWeatherService()
+        val smhiWeatherService = SMHIWeatherService()
+        binding.textviewFirst.text =
+            "Mock Temperature: " + mockWeatherService.getTemperatureNextHour() +
+                    "\nSMHI Temperature: " + smhiWeatherService.getTemperatureNextHour()
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
