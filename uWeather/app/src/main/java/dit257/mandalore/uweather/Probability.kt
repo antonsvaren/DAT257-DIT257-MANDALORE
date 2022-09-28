@@ -1,21 +1,18 @@
 package dit257.mandalore.uweather
 
 import java.util.*
+import kotlin.math.abs
 
 class Probability {
 
     //Calculate probability based on difference from median
-    fun calcProbabilityMedian(allLastTemps:DoubleArray, temp:Double): Double {
+    fun calcProbabilityMean(allLastTemps:DoubleArray, temp:Double): Double {
         var total = 0.0
-        var max = 0.0
-        var min = 0.0
         for(t in allLastTemps){
             total += t
-            if(t<min){min=t}
-            if(t>max){max=t}
         }
-        val median = total / allLastTemps.size
-        return 1 - ((temp - median) / (max-min))
+        val mean = total / allLastTemps.size
+        return 1 - (abs(temp - mean) / 100)
     }
     //Calculate probability based on providers track record
     fun calcProbabilityTrackRecord(provider:LinkedList<Int>, actual_temp:LinkedList<Int>):Double{
