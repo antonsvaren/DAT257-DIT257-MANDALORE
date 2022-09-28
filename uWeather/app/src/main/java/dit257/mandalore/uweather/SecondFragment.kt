@@ -47,6 +47,8 @@ class SecondFragment : Fragment() {
             "$name: $temperature Probability: $prob%"
         }.joinToString("\n")
 
+        binding.textviewThird.text = (p.confidenceInterval(allCurrentTemps)).plus("\nwith an accuracy of 90%")
+
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }

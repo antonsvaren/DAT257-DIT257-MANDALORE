@@ -10,6 +10,6 @@ class Mock2WeatherService : WeatherService("Mock 2", "") {
     }
 
     override fun getCurrentTemperature(): Double {
-        return 5.17
+        return 12.0
     }
 }
