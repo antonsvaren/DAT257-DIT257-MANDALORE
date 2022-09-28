@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import dit257.mandalore.uweather.api.MockWeatherService
-import dit257.mandalore.uweather.api.SMHIWeatherService
 import dit257.mandalore.uweather.api.WeatherService
 import dit257.mandalore.uweather.databinding.FragmentSecondBinding
 
@@ -37,7 +35,7 @@ class SecondFragment : Fragment() {
 
         val p = Probability()
         val allServices = WeatherService.services.toList()
-        val allCurrentTemps = doubleArrayOf(0.0, 0.0)
+        val allCurrentTemps = doubleArrayOf(0.0, 0.0, 0.0)
         for(i in allServices.indices){
             allCurrentTemps[i] = allServices[i].getCurrentTemperature()!!
         }
@@ -45,8 +43,8 @@ class SecondFragment : Fragment() {
         binding.textviewSecond.text = WeatherService.services.map { service ->
             val name = service.name
             val temperature = service.getCurrentTemperature()
-            val prob = p.calcProbabilityMean(allCurrentTemps, temperature!!)
-            "$name: $temperature Probability: $prob"
+            val prob = Math.round(p.calcProbabilityMean(allCurrentTemps, temperature!!)*100)
+            "$name: $temperature Probability: $prob%"
         }.joinToString("\n")
 
         binding.buttonSecond.setOnClickListener {

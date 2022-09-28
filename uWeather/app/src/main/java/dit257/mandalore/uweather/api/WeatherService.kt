@@ -9,7 +9,7 @@ import java.util.concurrent.Future
 
 abstract class WeatherService(val name: String, private val api: String) {
     companion object {
-        val services = sequenceOf<WeatherService>(SMHIWeatherService(), MockWeatherService())
+        val services = sequenceOf<WeatherService>(SMHIWeatherService(), MockWeatherService(), Mock2WeatherService())
         private val executor: ExecutorService = Executors.newCachedThreadPool()
     }
 
