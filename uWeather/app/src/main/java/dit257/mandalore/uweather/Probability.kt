@@ -15,7 +15,7 @@ class Probability {
         val mean = total / allLastTemps.size
         return 1 - (abs(temp - mean) / 100)
     }
-
+    // Calculate the span of temperatures, with a confidence interval of 90%.
     fun confidenceInterval(allLastTemps: DoubleArray): String{
         var variance = 0.0;
         var total = 0.0;
