@@ -5,12 +5,17 @@ import java.util.*
 class Probability {
 
     //Calculate probability based on difference from median
-    fun calcProbabilityMedian(all_last_temps:IntArray): Double {
-        var total = 0
-        for(t in all_last_temps){
+    fun calcProbabilityMedian(allLastTemps:DoubleArray, temp:Double): Double {
+        var total = 0.0
+        var max = 0.0
+        var min = 0.0
+        for(t in allLastTemps){
             total += t
+            if(t<min){min=t}
+            if(t>max){max=t}
         }
-        return total / 4.0 % 10
+        val median = total / allLastTemps.size
+        return 1 - ((temp - median) / (max-min))
     }
     //Calculate probability based on providers track record
     fun calcProbabilityTrackRecord(provider:LinkedList<Int>, actual_temp:LinkedList<Int>):Double{
