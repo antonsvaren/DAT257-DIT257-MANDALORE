@@ -12,7 +12,7 @@ Currently we have no requirements on level of unit test, regression tests or man
 
 
 Pull Request process:
-When functionality is beeing beeing developed in a separate branch the branch shall be rebased, if main has evolved, and merged.
+When functionality is being developed in a separate branch the branch shall be rebased, if main has evolved, and merged.
 before that merge the code should be reviewed by at least one reviewer. 
 comments shall be added by the reviewer, the developer will respond through code modifications and/or argumentation until the commenting Reviewer has resolved the conversation.
 When all conversations have been resolved the Reviewer will approve the Pull request and merge the branch to main.
