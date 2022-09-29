@@ -14,8 +14,8 @@ abstract class WeatherService(val name: String, private val api: String) {
 
         init {
             cities["Gothenburg"] = Pair(11.966667F, 57.7F)
-            cities["Stockholm"] = Pair(59.329445F, 18.068611F)
-            cities["Malmö"] = Pair(55.60583F, 13.035833F)
+            cities["Stockholm"] = Pair(18.068611F, 59.329445F)
+            cities["Malmö"] = Pair(13.035833F, 55.60583F)
         }
 
         fun getCities(): MutableSet<String> {
