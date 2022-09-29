@@ -1,4 +1,4 @@
-package dit257.mandalore.uweather.api
+package dit257.mandalore.uweather.api.weatherservice
 
 import org.json.JSONObject
 import java.util.concurrent.Future
@@ -12,14 +12,14 @@ class SMHIWeatherService :
         val timeSeries = JSONObject(response).getJSONArray("timeSeries")
         for (i in 0 until timeSeries.length()) {
             val parameters = timeSeries.getJSONObject(i).getJSONArray("parameters")
-            val response = HashMap<String, Double>()
-            for (i in 0 until parameters.length()) {
-                val parameter = parameters.getJSONObject(i)
+            val data = HashMap<String, Double>()
+            for (j in 0 until parameters.length()) {
+                val parameter = parameters.getJSONObject(j)
                 val name = parameter.getString("name")
                 val value = parameter.getJSONArray("values").getDouble(0)
-                response[name] = value
+                data[name] = value
             }
-            responses.add(response)
+            responses.add(data)
         }
     }
 

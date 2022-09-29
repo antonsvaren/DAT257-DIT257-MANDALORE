@@ -1,4 +1,4 @@
-package dit257.mandalore.uweather.api
+package dit257.mandalore.uweather.api.weatherservice
 
 import java.io.BufferedReader
 import java.io.IOException
@@ -9,11 +9,11 @@ import java.util.concurrent.Future
 
 abstract class WeatherService(val name: String, private val api: String) {
     companion object {
-        val services = sequenceOf<WeatherService>(SMHIWeatherService(), MockWeatherService())
-        private val executor: ExecutorService = Executors.newCachedThreadPool()
+        val services = sequenceOf(SMHIWeatherService(), MockWeatherService())
     }
 
     val responses = arrayListOf<Map<String, Double>>()
+    private val executor: ExecutorService = Executors.newSingleThreadExecutor()
 
     abstract fun parseResponse(response: String)
     abstract fun update(lon: Float, lat: Float): Future<*>?
