@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import dit257.mandalore.uweather.api.weatherservice.WeatherService
+import dit257.mandalore.uweather.api.WeatherService
 
 class LoadingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,7 @@ class LoadingActivity : AppCompatActivity() {
             finish()
         }, 2000)
 
-        WeatherService.services.map { service -> service.update(11.966667F, 57.7F) }
+        WeatherService.services.map { service -> service.update("Gothenburg") }
             .forEach { future -> future?.get() }
     }
 }

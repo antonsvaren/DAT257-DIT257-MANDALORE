@@ -1,4 +1,4 @@
-package dit257.mandalore.uweather.api.weatherservice
+package dit257.mandalore.uweather.api
 
 import java.util.concurrent.Future
 

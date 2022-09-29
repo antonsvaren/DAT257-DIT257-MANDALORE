@@ -1,4 +1,4 @@
-package dit257.mandalore.uweather.api.weatherservice
+package dit257.mandalore.uweather.api
 
 import java.io.BufferedReader
 import java.io.IOException
@@ -10,6 +10,17 @@ import java.util.concurrent.Future
 abstract class WeatherService(val name: String, private val api: String) {
     companion object {
         val services = sequenceOf(SMHIWeatherService(), MockWeatherService())
+        val cities = HashMap<String, Pair<Float, Float>>()
+
+        init {
+            cities["Gothenburg"] = Pair(11.966667F, 57.7F)
+            cities["Stockholm"] = Pair(59.329445F, 18.068611F)
+            cities["Malmö"] = Pair(55.60583F, 13.035833F)
+        }
+
+        fun getCities(): MutableSet<String> {
+            return cities.keys
+        }
     }
 
     val responses = arrayListOf<Map<String, Double>>()
@@ -18,6 +29,11 @@ abstract class WeatherService(val name: String, private val api: String) {
     abstract fun parseResponse(response: String)
     abstract fun update(lon: Float, lat: Float): Future<*>?
     abstract fun getCurrentTemperature(): Double?
+
+    fun update(city: String): Future<*>? {
+        val coords = cities[city]!!
+        return update(coords.first, coords.second)
+    }
 
     fun request(endpoint: String): Future<*> {
         responses.clear()
