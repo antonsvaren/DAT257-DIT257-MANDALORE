@@ -6,6 +6,8 @@ import java.net.URL
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
+import javax.net.ssl.SSLContext
+import javax.net.ssl.SSLSocketFactory
 
 /**
  * A generic, unimplemented weather service.
@@ -16,7 +18,7 @@ import java.util.concurrent.Future
  */
 abstract class WeatherService(val name: String, private val api: String) {
     companion object {
-        val services = sequenceOf(SMHIWeatherService(), MockWeatherService())
+        val services = sequenceOf(SMHIWeatherService(), YrWeatherService(), MockWeatherService())
 
         /**
          * A map of supported cities in Sweden to their coordinates, using the English exonyms. The
@@ -25,9 +27,9 @@ abstract class WeatherService(val name: String, private val api: String) {
         val cities = HashMap<String, Pair<Float, Float>>()
 
         init {
-            cities["Gothenburg"] = Pair(11.966667F, 57.7F)
-            cities["Stockholm"] = Pair(18.068611F, 59.329445F)
-            cities["Malmö"] = Pair(13.035833F, 55.60583F)
+            cities["Gothenburg"] = Pair(11.9667F, 57.7F)
+            cities["Stockholm"] = Pair(18.0686F, 59.3295F)
+            cities["Malmö"] = Pair(13.0358F, 55.6058F)
         }
 
         /**
@@ -89,7 +91,13 @@ abstract class WeatherService(val name: String, private val api: String) {
         responses.clear()
         return executor.submit {
             try {
-                URL("$api/$endpoint").openStream().use {
+                val connection = URL("$api/$endpoint").openConnection()
+                // Needed for yr.no; doesn't hurt for other services
+                connection.setRequestProperty(
+                    "User-Agent",
+                    "uWeather/1.0 github.com/antonsvaren/DAT257-DIT257-MANDALORE"
+                )
+                connection.getInputStream().use {
                     parseResponse(it.bufferedReader().use(BufferedReader::readText))
                 }
             } catch (e: IOException) {
