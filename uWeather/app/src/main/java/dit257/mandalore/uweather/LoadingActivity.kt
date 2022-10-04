@@ -19,7 +19,7 @@ class LoadingActivity : AppCompatActivity() {
             finish()
         }, 2000)
 
-        WeatherService.services.map { service -> service.update(11.966667F, 57.7F) }
+        WeatherService.services.map { service -> service.update("Gothenburg") }
             .forEach { future -> future?.get() }
     }
 }
