@@ -6,23 +6,21 @@ import java.util.concurrent.Future
 class YrWeatherService :
     WeatherService("Yr", "https://api.met.no/weatherapi/locationforecast/2.0") {
     override fun parseResponse(response: String) {
-        val properties = JSONObject(response).getJSONObject("properties").getJSONArray("timeseries")
-            .getJSONObject(0).getJSONObject("data")
-        for (key in arrayOf("instant", "next_1_hours", "next_6_hours", "next_12_hours")) {
+        val timeseries = JSONObject(response).getJSONObject("properties").getJSONArray("timeseries")
+        for (i in 0 until timeseries.length()) {
             val data = HashMap<String, Double>()
-            val details = properties.getJSONObject(key)
+            val details = timeseries.getJSONObject(i).getJSONObject("data").getJSONObject("instant")
                 .getJSONObject("details")
-            for (name in details.keys())
-                data[name] = details.getDouble(name)
+            for (name in details.keys()) data[name] = details.getDouble(name)
             responses.add(data)
         }
     }
 
-    override fun update(lon: Float, lat: Float): Future<*>? {
-        return request("complete?lon=$lon&lat=$lat")
+    override fun update(lon: Float, lat: Float): Future<*> {
+        return request("compact?lon=$lon&lat=$lat")
     }
 
     override fun getCurrentTemperature(): Double? {
-        return responses.first()["air_temperature"]
+        return getOrNull(0, "air_temperature")
     }
 }
