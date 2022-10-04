@@ -1,5 +1,6 @@
 package dit257.mandalore.uweather
 
+import android.net.http.HttpResponseCache
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -54,5 +55,12 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        // Flush cache to file system so that it persists
+        HttpResponseCache.getInstalled()?.flush()
     }
 }
