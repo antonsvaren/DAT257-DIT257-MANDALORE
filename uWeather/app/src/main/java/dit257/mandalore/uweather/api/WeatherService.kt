@@ -1,16 +1,12 @@
 package dit257.mandalore.uweather.api
 
 import org.json.JSONException
-import java.io.BufferedInputStream
-import java.io.BufferedReader
 import java.io.IOException
 import java.net.URL
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
 import javax.net.ssl.HttpsURLConnection
-import javax.net.ssl.SSLContext
-import javax.net.ssl.SSLSocketFactory
 
 /**
  * A generic, unimplemented weather service.
