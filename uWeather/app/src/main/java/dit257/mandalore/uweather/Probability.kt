@@ -6,7 +6,7 @@ import kotlin.math.abs
 
 class Probability {
 
-    //Calculate probability based on difference from median
+    //Calculates the mean from all data points provided by the API for a specific City. For now, hardcoded for Gothenburg
     fun calcProbabilityMean(allLastTemps:DoubleArray, temp:Double): Double {
         var total = 0.0
         for(t in allLastTemps){
@@ -15,7 +15,9 @@ class Probability {
         val mean = total / allLastTemps.size
         return 1 - (abs(temp - mean) / 100)
     }
-    // Calculate the span of temperatures, with a confidence interval of 90%.
+    // We take all the recent temperatures for a specific city and calculating a interval of what the
+    // temperature will be. With a 90% confidence level. z_alpha is decided on what the degrees of freedom((how many data points we have)-1 )
+    // we choose and what level of confidence we are choosing.
     fun confidenceInterval(allLastTemps: DoubleArray): String{
         var variance = 0.0;
         var total = 0.0;
