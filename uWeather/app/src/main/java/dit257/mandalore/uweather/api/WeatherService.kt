@@ -17,7 +17,7 @@ import javax.net.ssl.HttpsURLConnection
  */
 abstract class WeatherService(val name: String, private val api: String) {
     companion object {
-        val services = sequenceOf(SMHIWeatherService(), YrWeatherService(), MockWeatherService())
+        val services = sequenceOf(SMHIWeatherService(), YrWeatherService())
 
         /**
          * A map of supported cities in Sweden to their coordinates, using the English exonyms. The
