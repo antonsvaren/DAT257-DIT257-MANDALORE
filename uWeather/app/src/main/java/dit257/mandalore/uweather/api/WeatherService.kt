@@ -1,6 +1,6 @@
 package dit257.mandalore.uweather.api
 
-import org.json.JSONException
+import java.io.BufferedReader
 import java.io.IOException
 import java.net.URL
 import java.util.concurrent.ExecutorService

@@ -2,7 +2,7 @@ package dit257.mandalore.uweather.api
 
 import java.util.concurrent.Future
 
-class MockWeatherService : WeatherService("Mock", "") {
+class Mock2WeatherService : WeatherService("Mock 2", "") {
     override fun parseResponse(response: String) {}
 
     override fun update(lon: Float, lat: Float): Future<*>? {
@@ -10,6 +10,6 @@ class MockWeatherService : WeatherService("Mock", "") {
     }
 
     override fun getCurrentTemperature(): Double {
-        return 13.0//9214972148.12
+        return 12.0
     }
 }
