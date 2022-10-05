@@ -1,5 +1,6 @@
 package dit257.mandalore.uweather
 
+import android.net.http.HttpResponseCache
 import android.os.Bundle
 import android.text.TextUtils.replace
 import com.google.android.material.snackbar.Snackbar
@@ -79,4 +80,11 @@ class MainActivity : AppCompatActivity() {
     }
 */
 
+
+    override fun onStop() {
+        super.onStop()
+
+        // Flush cache to file system so that it persists
+        HttpResponseCache.getInstalled()?.flush()
+    }
 }

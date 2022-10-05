@@ -1,0 +1,29 @@
+PO/Stakeholder involvement: 
+Don’t have that much to show right now, they have given feedback based on our prototype. When we have more finished we will use the feedback more. We have not reached MVP yet, will define the MVP more clearly. Stakeholder opinions are their own, separate from PO.
+
+Software Quality:
+Are comments part of quality? Answer: yes. Have worked with reviewing each others code before pushing to main. Biggest problem right now is lack of data, specifically we only get temperature from one API.
+
+Design decisions:
+Decided to make a mobile app, use android studio and kotlin, do everything client side, might bring it onto a server in the future, make static navigation bar, loading page. Some decisions go into social contract, some are written elsewhere, have meetings where we discuss new or old decisions. We use branches with pull requests to ensure code quality. Might need more standards in the future.
+
+Way of Working:
+Have note used KPIs yet, are planning to do so starting this week, mostly on team progress, how we improve our way of working.
+—————————————————————————————————
+What has worked? 
+Writing user stories and estimating has improved. Better structured meetings. Using branches and reviewing pull requests. Moving planning to Mondays. Better communication. Event planning and summarization.
+
+Where have we had problems? 
+While grooming there were some tasks that depended on each other which we didn’t take into account while estimating. Has spent too little time on the project, no follow up on pull requests comments.
+
+What should we continue doing? 
+Keep our meeting structure and spend time planning. Branching and reviewing.
+
+What should we improve? 
+Estimating. Better grooming of product backlog, and create more stories from the idea box. More work. Documentation in code.
+
+What should we stop doing?
+Good estimation should make it not necessary to add stories during sprint. Wait for someone else to take initiative.
+
+Decisions:
+Look at pull requests more frequently, both to provide feedback and use feedback to change your code.
