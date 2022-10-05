@@ -1,10 +1,13 @@
 package dit257.mandalore.uweather
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.http.HttpResponseCache
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import dit257.mandalore.uweather.api.WeatherService
+import java.io.File
+
 
 class LoadingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +22,10 @@ class LoadingActivity : AppCompatActivity() {
             finish()
         }, 2000)
 
-        WeatherService.services.map { service -> service.update(11.966667F, 57.7F) }
+        // Create 10mb response cache
+        HttpResponseCache.install(File(cacheDir, "http"), 10485760)
+
+        WeatherService.services.map { service -> service.update("Gothenburg") }
             .forEach { future -> future?.get() }
     }
 }
