@@ -1,13 +1,12 @@
 package dit257.mandalore.uweather.api
 
-import java.io.BufferedReader
+import org.json.JSONException
 import java.io.IOException
 import java.net.URL
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
-import javax.net.ssl.SSLContext
-import javax.net.ssl.SSLSocketFactory
+import javax.net.ssl.HttpsURLConnection
 
 /**
  * A generic, unimplemented weather service.
@@ -81,6 +80,17 @@ abstract class WeatherService(val name: String, private val api: String) {
     }
 
     /**
+     * Gets the value for the given key and the response for the given index if it exists.
+     *
+     * @param index the index of [responses] to retrieve, in hours from now.
+     * @param key the key to retrieve from the response.
+     * @return the value at the given index and key, or null.
+     */
+    fun getOrNull(index: Int, key: String): Double? {
+        return responses.getOrNull(0)?.get(key)
+    }
+
+    /**
      * Sends a request asynchronously to the given endpoint and calls [parseResponse] with the
      * result.
      *
@@ -90,18 +100,19 @@ abstract class WeatherService(val name: String, private val api: String) {
     fun request(endpoint: String): Future<*> {
         responses.clear()
         return executor.submit {
+            val connection = URL("$api/$endpoint").openConnection() as HttpsURLConnection
             try {
-                val connection = URL("$api/$endpoint").openConnection()
                 // Needed for yr.no; doesn't hurt for other services
                 connection.setRequestProperty(
-                    "User-Agent",
-                    "uWeather/1.0 github.com/antonsvaren/DAT257-DIT257-MANDALORE"
+                    "User-Agent", "uWeather/1.0 github.com/antonsvaren/DAT257-DIT257-MANDALORE"
                 )
-                connection.getInputStream().use {
-                    parseResponse(it.bufferedReader().use(BufferedReader::readText))
-                }
+                connection.inputStream.bufferedReader().use { parseResponse(it.readText()) }
+            } catch (e: JSONException) {
+                e.printStackTrace()
             } catch (e: IOException) {
                 e.printStackTrace()
+            } finally {
+                connection.disconnect()
             }
         }
     }

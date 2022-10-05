@@ -26,6 +26,6 @@ class SMHIWeatherService : WeatherService(
     }
 
     override fun getCurrentTemperature(): Double? {
-        return responses.first()["t"]
+        return getOrNull(0, "t")
     }
 }
