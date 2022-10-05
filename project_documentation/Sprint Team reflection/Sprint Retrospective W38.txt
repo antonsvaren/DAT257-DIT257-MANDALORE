@@ -1,9 +1,18 @@
-KPIs: customer satisfaction (get some people to review), accuracy in weather predictions, goals achieved/tasks completed
+What has worked?
+Sprint planning and splitting into tasks 
+starting to use reviews and branches
 
-Apply INVEST to user stories, do more smaller stories
-
-Remember to estimate
-
-Remember to show progress to PO/stakeholder to get feedback
-
-Look at definition of done
+Where have we had problems?
+Spent too little time on the project. There has been reviews, but no follow up on the comments.
+While grooming there were some tasks that depended on each other which we didn’t take into account while estimating.
+    
+What should we continue doing?
+Branches and reviewing
+        
+What should we improve?
+Better grooming of the product backlog, moving stuff from ideas to Product backlog describing them and prioritizing them.
+More work, more communication
+        
+What should we stop doing
+Wait for someone else to take initative.
+Good estimation should make it not necessary to add stories during sprint.
