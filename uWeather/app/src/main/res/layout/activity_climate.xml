@@ -8,7 +8,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="34dp" />
+        android:gravity="center"
+        android:text="Climate"
+        android:textColor="#23036A"
+        android:textFontWeight="400"
+        android:textSize="36dp"
+        tools:layout_editor_absoluteX="144dp"
+        tools:layout_editor_absoluteY="43dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
