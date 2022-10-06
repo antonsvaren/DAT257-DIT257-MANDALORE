@@ -43,7 +43,7 @@ class SecondFragment : Fragment() {
         binding.textviewSecond.text = WeatherService.services.map { service ->
             val name = service.name
             val temperature = service.getCurrentTemperature()
-            val prob = Math.round(p.calcProbabilityMean(allCurrentTemps, temperature!!)*100)
+            val prob = Math.round(p.calcMean(allCurrentTemps, temperature!!)*100)
             "$name: $temperature Probability: $prob%"
         }.joinToString("\n")
 
