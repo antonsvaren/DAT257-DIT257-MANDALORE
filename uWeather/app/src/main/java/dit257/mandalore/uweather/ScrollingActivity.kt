@@ -12,7 +12,17 @@ class ScrollingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityScrollingBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_scrolling)
 
+        setContentView(binding.root)
+
+        binding.imageButton5.setOnClickListener{
+            //TODO navigate to fragment about climate change
+        }
+        binding.imageButton6.setOnClickListener{
+            //TODO navigate to fragment about climate change
+        }
+        binding.imageButton7.setOnClickListener{
+            //TODO navigate to fragment about climate change
+        }
     }
 }
