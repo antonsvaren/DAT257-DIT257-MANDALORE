@@ -32,16 +32,13 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textviewFirst.text =
-            WeatherService.services.map { service ->
-                val name = service.name
-                val temperature = service.getCurrentTemperature()
-                "$name: $temperature"
-            }.joinToString("\n")
+        val weatherString = WeatherService.services.map { service ->
+            val name = service.name
+            val temperature = service.getCurrentTemperature()
+            "$name: $temperature"
+        }.joinToString("\n")
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+        binding.textviewFirst.text = weatherString
     }
 
     override fun onDestroyView() {

@@ -7,7 +7,7 @@ import kotlin.math.abs
 class Probability {
 
     //Calculates the mean from all data points provided by the API for a specific City. For now, hardcoded for Gothenburg
-    fun calcProbabilityMean(allLastTemps:DoubleArray, temp:Double): Double {
+    fun calcMean(allLastTemps:DoubleArray, temp:Double): Double {
         var total = 0.0
         for(t in allLastTemps){
             total += t

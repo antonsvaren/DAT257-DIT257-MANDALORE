@@ -43,15 +43,12 @@ class SecondFragment : Fragment() {
         binding.textviewSecond.text = WeatherService.services.map { service ->
             val name = service.name
             val temperature = service.getCurrentTemperature()
-            val prob = Math.round(p.calcProbabilityMean(allCurrentTemps, temperature!!)*100)
+            val prob = Math.round(p.calcMean(allCurrentTemps, temperature!!)*100)
             "$name: $temperature Probability: $prob%"
         }.joinToString("\n")
 
         binding.textviewThird.text = (p.confidenceInterval(allCurrentTemps)).plus("\nwith an accuracy of 90%")
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
     }
 
     override fun onDestroyView() {

@@ -1,0 +1,232 @@
+Index: app/src/main/res/menu/menu_main.xml
+===================================================================
+diff --git a/app/src/main/res/menu/menu_main.xml b/app/src/main/res/menu/menu_main.xml
+deleted file mode 100644
+--- a/app/src/main/res/menu/menu_main.xml	(revision cf26b735894db476b743e4193ba1807fb98c3f61)
++++ /dev/null	(revision cf26b735894db476b743e4193ba1807fb98c3f61)
+@@ -1,10 +0,0 @@
+-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    tools:context="dit257.mandalore.uweather.MainActivity">
+-    <item
+-        android:id="@+id/action_settings"
+-        android:orderInCategory="100"
+-        android:title="@string/action_settings"
+-        app:showAsAction="never" />
+-</menu>
+\ No newline at end of file
+Index: app/src/main/res/drawable/settings_icon.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/settings_icon.xml b/app/src/main/res/drawable/settings_icon.xml
+new file mode 100644
+--- /dev/null	(date 1664537955140)
++++ b/app/src/main/res/drawable/settings_icon.xml	(date 1664537955140)
+@@ -0,0 +1,9 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="32dp"
++    android:height="32dp"
++    android:viewportWidth="32"
++    android:viewportHeight="32">
++  <path
++      android:pathData="M23.14,16.94C23.18,16.64 23.2,16.33 23.2,16C23.2,15.68 23.18,15.36 23.13,15.06L25.16,13.48C25.34,13.34 25.39,13.07 25.28,12.87L23.36,9.55C23.24,9.33 22.99,9.26 22.77,9.33L20.38,10.29C19.88,9.91 19.35,9.59 18.76,9.35L18.4,6.81C18.36,6.57 18.16,6.4 17.92,6.4H14.08C13.84,6.4 13.65,6.57 13.61,6.81L13.25,9.35C12.66,9.59 12.12,9.92 11.63,10.29L9.24,9.33C9.02,9.25 8.77,9.33 8.65,9.55L6.74,12.87C6.62,13.08 6.66,13.34 6.86,13.48L8.89,15.06C8.84,15.36 8.8,15.69 8.8,16C8.8,16.31 8.82,16.64 8.87,16.94L6.84,18.52C6.66,18.66 6.61,18.93 6.72,19.13L8.64,22.45C8.76,22.67 9.01,22.74 9.23,22.67L11.62,21.71C12.12,22.09 12.65,22.41 13.24,22.65L13.6,25.19C13.65,25.43 13.84,25.6 14.08,25.6H17.92C18.16,25.6 18.36,25.43 18.39,25.19L18.75,22.65C19.34,22.41 19.88,22.09 20.37,21.71L22.76,22.67C22.98,22.75 23.23,22.67 23.35,22.45L25.27,19.13C25.39,18.91 25.34,18.66 25.15,18.52L23.14,16.94ZM16,19.6C14.02,19.6 12.4,17.98 12.4,16C12.4,14.02 14.02,12.4 16,12.4C17.98,12.4 19.6,14.02 19.6,16C19.6,17.98 17.98,19.6 16,19.6Z"
++      android:fillColor="#757575"/>
++</vector>
+Index: app/src/main/res/menu/botton_nav_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/menu/botton_nav_menu.xml b/app/src/main/res/menu/botton_nav_menu.xml
+new file mode 100644
+--- /dev/null	(date 1664538166603)
++++ b/app/src/main/res/menu/botton_nav_menu.xml	(date 1664538166603)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="utf-8"?>
++<menu xmlns:android="http://schemas.android.com/apk/res/android">
++
++    <item android:title="Maps"
++        android:id="@+id/maps"
++        android:icon="@drawable/maps_icon"
++        />
++    <item android:title="Weather"
++        android:id="@+id/weather"
++        android:icon="@drawable/weather_icon"
++        />
++    <item android:title="Climate"
++        android:id="@+id/climate"
++        android:icon="@drawable/climate_icon"
++        />
++    <item android:title="Settings"
++        android:id="@+id/settings"
++        android:icon="@drawable/settings_icon"
++        />
++</menu>
+\ No newline at end of file
+Index: app/src/main/res/drawable/maps_icon.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/maps_icon.xml b/app/src/main/res/drawable/maps_icon.xml
+new file mode 100644
+--- /dev/null	(date 1664537945849)
++++ b/app/src/main/res/drawable/maps_icon.xml	(date 1664537945849)
+@@ -0,0 +1,14 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="32dp"
++    android:height="32dp"
++    android:viewportWidth="32"
++    android:viewportHeight="32">
++  <path
++      android:pathData="M20,7C20,8.864 18.725,10.43 17,10.874V19C17,19.552 16.552,20 16,20C15.448,20 15,19.552 15,19V10.874C13.275,10.43 12,8.864 12,7C12,4.791 13.791,3 16,3C18.209,3 20,4.791 20,7ZM16,5C14.895,5 14,5.895 14,7C14,8.105 14.895,9 16,9C17.105,9 18,8.105 18,7C18,5.895 17.105,5 16,5Z"
++      android:fillColor="#757575"
++      android:fillType="evenOdd"/>
++  <path
++      android:pathData="M13,24.307V14.375C13.405,14.375 13.786,14.127 13.936,13.726C14.13,13.209 13.868,12.633 13.351,12.439L12.356,12.066C12.327,12.054 12.297,12.045 12.267,12.036C12.094,11.988 11.909,11.988 11.733,12.036C11.703,12.045 11.673,12.054 11.644,12.066L3.649,15.064C3.259,15.21 3,15.583 3,16V28C3,28.328 3.161,28.635 3.43,28.822C3.7,29.009 4.044,29.052 4.351,28.936L12,26.068L19.644,28.934L19.666,28.943C19.856,29.01 20.063,29.019 20.26,28.966C20.292,28.957 20.324,28.947 20.356,28.934L28.351,25.936C28.741,25.79 29,25.417 29,25V13C29,12.672 28.839,12.365 28.57,12.178C28.3,11.991 27.956,11.948 27.649,12.064L20,14.932L19.351,14.689C18.834,14.495 18.258,14.757 18.064,15.274C17.87,15.791 18.132,16.367 18.649,16.561L19,16.693V26.557L13,24.307ZM11,14.443V24.307L5,26.557V16.693L11,14.443ZM27,24.307L21,26.557V16.693L27,14.443V24.307Z"
++      android:fillColor="#757575"
++      android:fillType="evenOdd"/>
++</vector>
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <com.google.android.material.appbar.AppBarLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:theme=\"@style/Theme.UWeather.AppBarOverlay\">\r\n\r\n        <androidx.appcompat.widget.Toolbar\r\n            android:id=\"@+id/toolbar\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"?attr/actionBarSize\"\r\n            android:background=\"?attr/colorPrimary\"\r\n            app:popupTheme=\"@style/Theme.UWeather.PopupOverlay\" />\r\n\r\n    </com.google.android.material.appbar.AppBarLayout>\r\n\r\n    <include layout=\"@layout/content_main\" />\r\n\r\n    <com.google.android.material.floatingactionbutton.FloatingActionButton\r\n        android:id=\"@+id/fab\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_gravity=\"bottom|end\"\r\n        android:layout_marginEnd=\"@dimen/fab_margin\"\r\n        android:layout_marginBottom=\"16dp\"\r\n        app:srcCompat=\"@android:drawable/ic_dialog_email\" />\r\n\r\n</androidx.coordinatorlayout.widget.CoordinatorLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision cf26b735894db476b743e4193ba1807fb98c3f61)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1664551896171)
+@@ -22,13 +22,4 @@
+ 
+     <include layout="@layout/content_main" />
+ 
+-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+-        android:id="@+id/fab"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_gravity="bottom|end"
+-        android:layout_marginEnd="@dimen/fab_margin"
+-        android:layout_marginBottom="16dp"
+-        app:srcCompat="@android:drawable/ic_dialog_email" />
+-
+ </androidx.coordinatorlayout.widget.CoordinatorLayout>
+\ No newline at end of file
+Index: app/src/main/res/drawable/weather_icon.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/weather_icon.xml b/app/src/main/res/drawable/weather_icon.xml
+new file mode 100644
+--- /dev/null	(date 1664537970395)
++++ b/app/src/main/res/drawable/weather_icon.xml	(date 1664537970395)
+@@ -0,0 +1,10 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="32dp"
++    android:height="32dp"
++    android:viewportWidth="32"
++    android:viewportHeight="32">
++  <path
++      android:pathData="M17.333,20.373V11.333C17.333,10.98 17.193,10.641 16.943,10.39C16.693,10.14 16.354,10 16,10C15.646,10 15.307,10.14 15.057,10.39C14.807,10.641 14.667,10.98 14.667,11.333V20.373C14.264,20.606 13.929,20.94 13.695,21.342C13.461,21.745 13.336,22.201 13.333,22.667C13.333,23.374 13.614,24.052 14.114,24.552C14.615,25.052 15.293,25.333 16,25.333C16.707,25.333 17.385,25.052 17.886,24.552C18.386,24.052 18.667,23.374 18.667,22.667C18.664,22.201 18.539,21.745 18.305,21.342C18.072,20.94 17.736,20.606 17.333,20.373ZM22,17.333V7.333C22,5.742 21.368,4.216 20.243,3.091C19.117,1.965 17.591,1.333 16,1.333C14.409,1.333 12.883,1.965 11.757,3.091C10.632,4.216 10,5.742 10,7.333V17.333C9.078,18.378 8.446,19.644 8.164,21.008C7.882,22.372 7.961,23.786 8.394,25.11C8.826,26.434 9.596,27.622 10.629,28.557C11.661,29.492 12.92,30.141 14.28,30.44C14.845,30.569 15.421,30.645 16,30.667C17.548,30.674 19.064,30.232 20.365,29.395C21.667,28.558 22.698,27.361 23.333,25.95C23.968,24.538 24.18,22.973 23.943,21.444C23.707,19.915 23.032,18.487 22,17.333V17.333ZM19.333,26.76C18.272,27.701 16.881,28.181 15.466,28.096C14.051,28.011 12.727,27.368 11.787,26.307C10.846,25.246 10.365,23.855 10.45,22.439C10.535,21.024 11.179,19.701 12.24,18.76C12.366,18.636 12.466,18.489 12.535,18.327C12.604,18.164 12.639,17.99 12.64,17.813V7.333C12.64,6.449 12.991,5.601 13.616,4.976C14.241,4.351 15.089,4 15.973,4C16.857,4 17.705,4.351 18.33,4.976C18.955,5.601 19.307,6.449 19.307,7.333V17.92C19.307,18.096 19.343,18.271 19.412,18.433C19.48,18.596 19.581,18.743 19.707,18.867C20.252,19.393 20.678,20.03 20.958,20.734C21.238,21.438 21.364,22.194 21.329,22.951C21.293,23.708 21.097,24.449 20.753,25.124C20.409,25.799 19.925,26.393 19.333,26.867V26.76Z"
++      android:fillColor="#000000"
++      android:fillAlpha="0.6"/>
++</vector>
+Index: app/src/main/res/drawable/climate_icon.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/climate_icon.xml b/app/src/main/res/drawable/climate_icon.xml
+new file mode 100644
+--- /dev/null	(date 1664537931667)
++++ b/app/src/main/res/drawable/climate_icon.xml	(date 1664537931667)
+@@ -0,0 +1,10 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="32dp"
++    android:height="32dp"
++    android:viewportWidth="32"
++    android:viewportHeight="32">
++  <path
++      android:pathData="M17.953,29.512C24.492,29.512 29.906,24.086 29.906,17.559C29.906,11.019 24.48,5.605 17.941,5.605C11.414,5.605 6,11.019 6,17.559C6,24.086 11.426,29.512 17.953,29.512ZM14.684,15.297C14.637,14.84 14.438,14.43 14.121,14.137C15.152,11.523 16.793,9.156 18.938,7.246C19.102,7.258 19.266,7.281 19.43,7.305C17.895,9.895 16.969,12.801 16.746,15.813C16.043,15.695 15.352,15.519 14.684,15.297ZM9.281,11.934C10.957,9.379 13.734,7.574 16.898,7.246C15.117,9.109 13.734,11.277 12.797,13.633C12.469,13.633 12.117,13.75 11.813,13.949C10.898,13.387 10.043,12.707 9.281,11.934ZM20.145,12.074C20.156,13.141 20.285,14.195 20.531,15.215C20.32,15.426 20.168,15.695 20.086,15.988C19.793,16.012 19.5,16.023 19.195,16.023C18.844,16.023 18.492,16.012 18.152,15.988C18.352,13.117 19.23,10.375 20.695,7.949C20.309,9.273 20.133,10.656 20.145,12.074ZM21.563,12.063C21.551,10.715 21.738,9.367 22.137,8.102C24.434,9.133 26.309,10.996 27.363,13.281C26.133,14.219 24.75,14.922 23.273,15.391C22.957,14.957 22.441,14.676 21.855,14.664C21.68,13.82 21.574,12.953 21.563,12.063ZM7.594,17.559C7.594,16.023 7.934,14.57 8.555,13.246C9.316,13.973 10.148,14.617 11.051,15.156C11.027,15.25 11.027,15.356 11.027,15.461C11.027,16.082 11.332,16.633 11.813,16.973C11.566,18.191 11.438,19.457 11.438,20.734C10.09,20.078 8.801,19.246 7.617,18.25C7.605,18.016 7.594,17.793 7.594,17.559ZM28.313,17.559C28.313,18.566 28.16,19.551 27.879,20.477C27.199,20.84 26.496,21.156 25.77,21.426C24.645,20.406 23.707,19.188 23.004,17.84C23.32,17.57 23.531,17.195 23.613,16.773C25.137,16.305 26.578,15.602 27.891,14.664C28.16,15.59 28.313,16.563 28.313,17.559ZM16.688,17.313C16.688,18.836 16.863,20.336 17.203,21.801C17.004,21.953 16.84,22.152 16.723,22.375C15.41,22.176 14.109,21.836 12.856,21.355C12.82,19.961 12.926,18.59 13.195,17.266C13.617,17.184 13.981,16.961 14.25,16.645C15.035,16.914 15.856,17.113 16.688,17.242C16.688,17.266 16.688,17.289 16.688,17.313ZM19.195,17.441C19.57,17.441 19.934,17.43 20.285,17.395C20.566,17.863 21.059,18.191 21.633,18.262C22.301,19.609 23.191,20.852 24.258,21.918C22.875,22.305 21.469,22.516 20.051,22.563C19.805,21.941 19.242,21.496 18.563,21.414C18.27,20.113 18.105,18.766 18.105,17.406C18.469,17.43 18.832,17.441 19.195,17.441ZM7.98,20.336C9.082,21.121 10.254,21.789 11.484,22.316C11.531,23.57 11.719,24.813 12.047,26.031C10.102,24.66 8.637,22.656 7.98,20.336ZM17.953,27.918C16.512,27.918 15.117,27.613 13.863,27.051C13.371,25.715 13.055,24.32 12.938,22.891C14.133,23.301 15.352,23.605 16.605,23.781C16.828,24.496 17.484,25.012 18.27,25.047C18.668,25.984 19.148,26.898 19.699,27.766C19.125,27.859 18.551,27.918 17.953,27.918ZM19.605,24.555C19.77,24.391 19.91,24.191 20.004,23.98C21.855,23.922 23.707,23.617 25.488,23.031C25.746,23.242 26.027,23.441 26.297,23.641C25.02,25.375 23.227,26.711 21.141,27.402C20.543,26.5 20.027,25.539 19.605,24.555Z"
++      android:fillColor="#000000"
++      android:fillAlpha="0.6"/>
++</vector>
+Index: app/src/main/java/dit257/mandalore/uweather/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dit257.mandalore.uweather\r\n\r\nimport android.os.Bundle\r\nimport com.google.android.material.snackbar.Snackbar\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport androidx.navigation.findNavController\r\nimport androidx.navigation.ui.AppBarConfiguration\r\nimport androidx.navigation.ui.navigateUp\r\nimport androidx.navigation.ui.setupActionBarWithNavController\r\nimport android.view.Menu\r\nimport android.view.MenuItem\r\nimport dit257.mandalore.uweather.databinding.ActivityMainBinding\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n\r\n    private lateinit var appBarConfiguration: AppBarConfiguration\r\n    private lateinit var binding: ActivityMainBinding\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n\r\n        binding = ActivityMainBinding.inflate(layoutInflater)\r\n        setContentView(binding.root)\r\n\r\n        setSupportActionBar(binding.toolbar)\r\n\r\n        val navController = findNavController(R.id.nav_host_fragment_content_main)\r\n        appBarConfiguration = AppBarConfiguration(navController.graph)\r\n        setupActionBarWithNavController(navController, appBarConfiguration)\r\n\r\n        binding.fab.setOnClickListener { view ->\r\n            Snackbar.make(view, \"Replace with your own action\", Snackbar.LENGTH_LONG)\r\n                .setAction(\"Action\", null).show()\r\n        }\r\n    }\r\n\r\n    override fun onCreateOptionsMenu(menu: Menu): Boolean {\r\n        // Inflate the menu; this adds items to the action bar if it is present.\r\n        menuInflater.inflate(R.menu.menu_main, menu)\r\n        return true\r\n    }\r\n\r\n    override fun onOptionsItemSelected(item: MenuItem): Boolean {\r\n        // Handle action bar item clicks here. The action bar will\r\n        // automatically handle clicks on the Home/Up button, so long\r\n        // as you specify a parent activity in AndroidManifest.xml.\r\n        return when (item.itemId) {\r\n            R.id.action_settings -> true\r\n            else -> super.onOptionsItemSelected(item)\r\n        }\r\n    }\r\n\r\n    override fun onSupportNavigateUp(): Boolean {\r\n        val navController = findNavController(R.id.nav_host_fragment_content_main)\r\n        return navController.navigateUp(appBarConfiguration)\r\n                || super.onSupportNavigateUp()\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/dit257/mandalore/uweather/MainActivity.kt b/app/src/main/java/dit257/mandalore/uweather/MainActivity.kt
+--- a/app/src/main/java/dit257/mandalore/uweather/MainActivity.kt	(revision cf26b735894db476b743e4193ba1807fb98c3f61)
++++ b/app/src/main/java/dit257/mandalore/uweather/MainActivity.kt	(date 1664551922552)
+@@ -28,12 +28,8 @@
+         appBarConfiguration = AppBarConfiguration(navController.graph)
+         setupActionBarWithNavController(navController, appBarConfiguration)
+ 
+-        binding.fab.setOnClickListener { view ->
+-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+-                .setAction("Action", null).show()
+-        }
+     }
+-
++/*
+     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+         // Inflate the menu; this adds items to the action bar if it is present.
+         menuInflater.inflate(R.menu.menu_main, menu)
+@@ -50,6 +46,8 @@
+         }
+     }
+ 
++
++ */
+     override fun onSupportNavigateUp(): Boolean {
+         val navController = findNavController(R.id.nav_host_fragment_content_main)
+         return navController.navigateUp(appBarConfiguration)
+Index: app/src/main/res/layout/content_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    app:layout_behavior=\"@string/appbar_scrolling_view_behavior\">\r\n\r\n    <fragment\r\n        android:id=\"@+id/nav_host_fragment_content_main\"\r\n        android:name=\"androidx.navigation.fragment.NavHostFragment\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"0dp\"\r\n        app:defaultNavHost=\"true\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:navGraph=\"@navigation/nav_graph\" />\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/content_main.xml b/app/src/main/res/layout/content_main.xml
+--- a/app/src/main/res/layout/content_main.xml	(revision cf26b735894db476b743e4193ba1807fb98c3f61)
++++ b/app/src/main/res/layout/content_main.xml	(date 1664538310671)
+@@ -1,10 +1,31 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     app:layout_behavior="@string/appbar_scrolling_view_behavior">
+ 
++    <FrameLayout
++        android:layout_width="0dp"
++        android:layout_height="0dp"
++        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment_content_main">
++
++    </FrameLayout>
++
++    <com.google.android.material.bottomnavigation.BottomNavigationView
++        android:id="@+id/bottomNavigationView"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:menu="@menu/botton_nav_menu"/>
++
+     <fragment
+         android:id="@+id/nav_host_fragment_content_main"
+         android:name="androidx.navigation.fragment.NavHostFragment"
