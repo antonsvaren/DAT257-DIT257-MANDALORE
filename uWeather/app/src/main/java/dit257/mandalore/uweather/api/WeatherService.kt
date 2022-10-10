@@ -1,13 +1,18 @@
 package dit257.mandalore.uweather.api
 
+import org.json.JSONException
 import java.io.BufferedReader
+import org.json.JSONObject
 import java.io.IOException
 import java.net.URL
+import java.time.LocalDateTime
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
+import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
-import javax.net.ssl.SSLContext
-import javax.net.ssl.SSLSocketFactory
+import javax.net.ssl.HttpsURLConnection
 
 /**
  * A generic, unimplemented weather service.
@@ -15,15 +20,13 @@ import javax.net.ssl.SSLSocketFactory
  * @property name the human-readable name for the implemented weather service.
  * @property api the base url for the API sans the request endpoints of the implemented weather
  * service.
+ * @property temperatureKey the key under which temperature is stored.
  */
-abstract class WeatherService(val name: String, private val api: String) {
+abstract class WeatherService(
+    val name: String, private val api: String, private val temperatureKey: String
+) {
     companion object {
-        val services = sequenceOf(SMHIWeatherService(), YrWeatherService(), MockWeatherService())
-
-        /**
-         * A map of supported cities in Sweden to their coordinates, using the English exonyms. The
-         * coordinates are longitude first, latitude second.
-         */
+        val services = sequenceOf(SMHIWeatherService(), YrWeatherService())
         val cities = HashMap<String, Pair<Float, Float>>()
 
         init {
@@ -37,20 +40,20 @@ abstract class WeatherService(val name: String, private val api: String) {
          *
          * @return the collection of supported city names.
          */
-        fun getCities(): MutableSet<String> {
+        fun getCities(): Set<String> {
             return cities.keys
         }
     }
 
-    val responses = arrayListOf<Map<String, Double>>()
+    private val responses = TreeMap<LocalDateTime, Map<String, Double>>()
     private val executor: ExecutorService = Executors.newSingleThreadExecutor()
 
     /**
-     * Parses a raw response from the API into [responses].
+     * Parses a JSON response from the API into [responses].
      *
-     * @param response the raw response from the weather API.
+     * @param response the JSON response from the weather API.
      */
-    abstract fun parseResponse(response: String)
+    abstract fun parseResponse(response: JSONObject)
 
     /**
      * Requests the latest weather from the weather API asynchronously at the given location and
@@ -63,11 +66,23 @@ abstract class WeatherService(val name: String, private val api: String) {
     abstract fun update(lon: Float, lat: Float): Future<*>?
 
     /**
-     * Gets the latest temperature information from the API if it exists.
+     * Stores the data in [responses] after parsing the given time into a [LocalDateTime] object.
      *
-     * @return the latest temperature information from the API, or null.
+     * @param time the raw zoned ISO time for when the data becomes valid.
+     * @param data the data from the API.
      */
-    abstract fun getCurrentTemperature(): Double?
+    fun addData(time: String, data: Map<String, Double>) {
+        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = data
+    }
+
+    /**
+     * Gets the temperature from the API for the current time if it exists.
+     *
+     * @return the temperature from the API for the current time, or null.
+     */
+    fun getCurrentTemperature(): Double? {
+        return responses.lowerEntry(LocalDateTime.now(ZoneOffset.UTC))?.value?.get(temperatureKey)
+    }
 
     /**
      * Calls [update] after converting the given city name to coordinates.
@@ -76,8 +91,8 @@ abstract class WeatherService(val name: String, private val api: String) {
      * @return the [Future] for and parsing the result, or null.
      */
     fun update(city: String): Future<*>? {
-        val coords = cities[city]!!
-        return update(coords.first, coords.second)
+        val (lon, lat) = cities[city]!!
+        return update(lon, lat)
     }
 
     /**
@@ -90,18 +105,20 @@ abstract class WeatherService(val name: String, private val api: String) {
     fun request(endpoint: String): Future<*> {
         responses.clear()
         return executor.submit {
+            val connection = URL("$api/$endpoint").openConnection() as HttpsURLConnection
             try {
-                val connection = URL("$api/$endpoint").openConnection()
                 // Needed for yr.no; doesn't hurt for other services
                 connection.setRequestProperty(
-                    "User-Agent",
-                    "uWeather/1.0 github.com/antonsvaren/DAT257-DIT257-MANDALORE"
+                    "User-Agent", "uWeather/1.0 github.com/antonsvaren/DAT257-DIT257-MANDALORE"
                 )
-                connection.getInputStream().use {
-                    parseResponse(it.bufferedReader().use(BufferedReader::readText))
-                }
+                connection.inputStream.bufferedReader()
+                    .use { parseResponse(JSONObject(it.readText())) }
+            } catch (e: JSONException) {
+                e.printStackTrace()
             } catch (e: IOException) {
                 e.printStackTrace()
+            } finally {
+                connection.disconnect()
             }
         }
     }

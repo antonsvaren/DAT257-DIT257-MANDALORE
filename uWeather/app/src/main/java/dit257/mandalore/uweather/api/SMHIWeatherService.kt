@@ -4,28 +4,25 @@ import org.json.JSONObject
 import java.util.concurrent.Future
 
 class SMHIWeatherService : WeatherService(
-    "SMHI", "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2"
+    "SMHI", "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2", "t"
 ) {
-    override fun parseResponse(response: String) {
-        val timeSeries = JSONObject(response).getJSONArray("timeSeries")
+    override fun parseResponse(response: JSONObject) {
+        val timeSeries = response.getJSONArray("timeSeries")
+        var time = response.getString("referenceTime")
         for (i in 0 until timeSeries.length()) {
-            val parameters = timeSeries.getJSONObject(i).getJSONArray("parameters")
+            val timeObject = timeSeries.getJSONObject(i)
+            val parameters = timeObject.getJSONArray("parameters")
             val data = HashMap<String, Double>()
             for (j in 0 until parameters.length()) {
                 val parameter = parameters.getJSONObject(j)
-                val name = parameter.getString("name")
-                val value = parameter.getJSONArray("values").getDouble(0)
-                data[name] = value
+                data[parameter.getString("name")] = parameter.getJSONArray("values").getDouble(0)
             }
-            responses.add(data)
+            addData(time, data)
+            time = timeObject.getString("validTime")
         }
     }
 
     override fun update(lon: Float, lat: Float): Future<*> {
         return request("geotype/point/lon/$lon/lat/$lat/data.json")
-    }
-
-    override fun getCurrentTemperature(): Double? {
-        return responses.first()["t"]
     }
 }

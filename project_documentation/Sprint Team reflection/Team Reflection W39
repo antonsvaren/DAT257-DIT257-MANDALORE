@@ -1,0 +1,42 @@
+Customer Value and Scope
+your user stories in terms of using a standard pattern, acceptance criteria, task breakdown and effort estimation and 
+how this influenced the way you worked and created value
+
+- User stories were written more clearly with acceptance criterias, better task breakdown with smaller tasks which made 
+  it easier to divide work and estimate.
+
+your acceptance tests, such as how they were performed, with whom, and which value they provided for you and the other stakeholders
+
+- Completed user stories were tested by members of the team that had not worked on that story.
+
+the three KPIs you use for monitoring your progress and how you use them to improve your process
+
+- Implemented first KPIs. One for completed tasks, to track our estimation techniques. One for customer satisfaction, to track overall product value.
+  One for teamwork, to track how the team feels about our teamwork. First readings indicate that we need to estimate better.
+
+Social Contract and Effort
+the time you have spent on the course and how it relates to what you delivered (so keep track of your hours so you can describe the current situation)
+
+- Same meeting times as other sprints. Team feels we spend to little time on the project.
+
+Design decisions and product structure
+how you ensure code quality and enforce coding standards
+
+- Decided that everything should be reviewed by someone that didn't work on the code before it is pushed to main branch.
+
+Application of Scrum
+the roles you have used within the team and their impact on your work
+
+- Scrum master has been setting up meetings which has led to discussions about how to work. 
+  PO has been writing user stories and given feedback on completed ones.
+
+the sprint review and how it relates to your scope and customer value (Did you have a PO, if yes, who?, if no, 
+how did you carry out the review? Did the review result in a re-prioritisation of user stories? 
+How did the reviews relate to your DoD? Did the feedback change your way of working?)
+
+- PO had feedback on design choices which led to new tasks. The feedback did not really relate to DoD.
+
+best practices for learning and using new tools and technologies (IDEs, version control, scrum boards etc.; 
+do not only describe which tools you used but focus on how you developed the expertise to use them)
+
+- We do some pair programming and help each other when we have a problem with the technology.

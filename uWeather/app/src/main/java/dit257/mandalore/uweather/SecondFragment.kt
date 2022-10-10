@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import dit257.mandalore.uweather.api.WeatherService
 import dit257.mandalore.uweather.databinding.FragmentSecondBinding
 
 /**
@@ -32,9 +33,22 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        val p = Probability()
+        val allServices = WeatherService.services.toList()
+        val allCurrentTemps = doubleArrayOf(0.0, 0.0, 0.0)
+        for(i in allServices.indices){
+            allCurrentTemps[i] = allServices[i].getCurrentTemperature()!!
         }
+
+        binding.textviewSecond.text = WeatherService.services.map { service ->
+            val name = service.name
+            val temperature = service.getCurrentTemperature()
+            val prob = Math.round(p.calcMean(allCurrentTemps, temperature!!)*100)
+            "$name: $temperature Probability: $prob%"
+        }.joinToString("\n")
+
+        binding.textviewThird.text = (p.confidenceInterval(allCurrentTemps)).plus("\nwith an accuracy of 90%")
+
     }
 
     override fun onDestroyView() {
