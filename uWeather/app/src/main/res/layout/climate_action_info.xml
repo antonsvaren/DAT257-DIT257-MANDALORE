@@ -9,14 +9,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:src="@drawable/climatechangeinfopic" />
+        android:src="@drawable/climate_action__icons___info" />
 
     <ImageButton
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="45dp"
         android:background="@color/purple_100"
         android:src="@drawable/arrow" />
 
@@ -24,8 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="250dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/climate_text"
+        android:text="@string/climate_action"
         android:textSize="15sp" />
 
 </FrameLayout>
