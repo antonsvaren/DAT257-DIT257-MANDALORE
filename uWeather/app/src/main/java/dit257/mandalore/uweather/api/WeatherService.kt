@@ -1,7 +1,6 @@
 package dit257.mandalore.uweather.api
 
 import org.json.JSONException
-import java.io.BufferedReader
 import org.json.JSONObject
 import java.io.IOException
 import java.net.URL
@@ -26,7 +25,7 @@ abstract class WeatherService(
     val name: String, private val api: String, private val temperatureKey: String
 ) {
     companion object {
-        val services = sequenceOf(SMHIWeatherService(), YrWeatherService())
+        val services = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())
         val cities = HashMap<String, Pair<Float, Float>>()
 
         init {
