@@ -9,22 +9,73 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:src="@drawable/climate_action__icons___info" />
+        android:src="@drawable/climate_action_icon" />
 
     <ImageButton
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginLeft="48dp"
         android:background="@color/purple_100"
         android:src="@drawable/arrow" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="250dp"
-        android:text="@string/climate_action"
-        android:textSize="15sp" />
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="240dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/climate_topic_2"
+        android:textSize="16sp"
+        android:textColor="@color/gray"/>
+    <TextView
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="240dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/climate_topic_2"
+        android:textSize="16sp"
+        android:textColor="@color/gray"/>
+    <View
+        android:layout_width="105dp"
+        android:layout_marginLeft="40dp"
+        android:layout_height="2dp"
+        android:background="@color/gray"
+        android:layout_marginTop="260dp"
+        />
+
+    <TextView
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="275dp"
+        android:text="@string/climate_title_3"
+        android:textColor="@color/purple_700"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="330dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="305dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/climate_text_para1"
+        android:textSize="16sp"
+        android:textColor="@color/purple_700"/>
+    <View
+        android:layout_width="111dp"
+        android:layout_marginLeft="40dp"
+        android:layout_height="2dp"
+        android:background="@color/purple_700"
+        android:layout_marginTop="610dp"
+        />
+    <TextView
+        android:layout_width="330dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="630dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/climate_text_para2"
+        android:textSize="16sp"
+        android:textColor="@color/purple_700"/>
+
 
 </FrameLayout>

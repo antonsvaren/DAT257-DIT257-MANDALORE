@@ -10,8 +10,14 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
-    <string name="climate_text">
-        "Climate change is bad."
+    <string name="climate_topic_1">Climate change</string>
+    <string name="climate_topic_2">Climate action</string>
+    <string name="climate_title_1">What is climate change?</string>
+    <string name="climate_title_2">Cause of climate change</string>
+    <string name="climate_title_3">Decisions with a big climate impact</string>
+    <string name="climate_text_para1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum tortor nec neque accumsan efficitur. Donec lectus non lacus viverra fringilla nec malesuada tellus. Sed elementum lectus ac lorem tempus, get varius nunceleifend.Sed elementum lectus ac lorem tempus, get varius nunc eleifend. Sed elementum lectus ac lorem tempus, get varius nunc eleifend. Quisque condimentum tortor nec neque accumsan efficitur. Donec lectus non lacus viverra fringilla nec malesuada tellus. Donec lectus non lacus viverra fringilla nec malesuada tellus. Sed elementum lectus ac lorem tempus, get varius nunceleifend.
+    </string>
+    <string name="climate_text_para2">Quisque condimentum tortor nec neque accumsan efficitur. Donec lectus non lacus viverra fringilla nec malesuada tellus. Sed elementum lectus ac lorem tempus, get varius nunc eleifend. Quisque condimentum tortor nec neque accumsan efficitur. Quisque condimentum tortor nec neque accumsan efficitur.
     </string>
     <string name="climate_cause">
         "Climate change is caused by the US."
