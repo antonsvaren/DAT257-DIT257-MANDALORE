@@ -19,10 +19,9 @@ import javax.net.ssl.HttpsURLConnection
  * @property name the human-readable name for the implemented weather service.
  * @property api the base url for the API sans the request endpoints of the implemented weather
  * service.
- * @property temperatureKey the key under which temperature is stored.
  */
 abstract class WeatherService(
-    val name: String, private val api: String, private val temperatureKey: String
+    val name: String, private val api: String
 ) {
     companion object {
         val services = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())
@@ -44,7 +43,7 @@ abstract class WeatherService(
         }
     }
 
-    private val responses = TreeMap<LocalDateTime, Map<String, Double>>()
+    private val responses = TreeMap<LocalDateTime, Double>()
     private val executor: ExecutorService = Executors.newSingleThreadExecutor()
 
     /**
@@ -65,22 +64,32 @@ abstract class WeatherService(
     abstract fun update(lon: Float, lat: Float): Future<*>?
 
     /**
-     * Stores the data in [responses] after parsing the given time into a [LocalDateTime] object.
-     *
-     * @param time the raw zoned ISO time for when the data becomes valid.
-     * @param data the data from the API.
-     */
-    fun addData(time: String, data: Map<String, Double>) {
-        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = data
-    }
-
-    /**
      * Gets the temperature from the API for the current time if it exists. Override this for mocks.
      *
      * @return the temperature from the API for the current time, or null.
      */
     open fun getCurrentTemperature(): Double? {
-        return responses.lowerEntry(LocalDateTime.now(ZoneOffset.UTC))?.value?.get(temperatureKey)
+        return getTemperature(LocalDateTime.now(ZoneOffset.UTC))
+    }
+
+    /**
+     * Stores the data in [responses] after parsing the given time into a [LocalDateTime] object.
+     *
+     * @param time the raw zoned ISO time for when the data becomes valid.
+     * @param temperature the temperature from the API.
+     */
+    fun addData(time: String, temperature: Double) {
+        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = temperature
+    }
+
+    /**
+     * Gets the temperature from the API for the given time if it exists.
+     *
+     * @param time the time to get the temperature for.
+     * @return the temperature from the API for the given time, or null.
+     */
+    fun getTemperature(time: LocalDateTime): Double? {
+        return responses.lowerEntry(time)?.value
     }
 
     /**
