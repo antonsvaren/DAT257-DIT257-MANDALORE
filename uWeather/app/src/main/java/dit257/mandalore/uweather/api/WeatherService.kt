@@ -76,11 +76,11 @@ abstract class WeatherService(
     }
 
     /**
-     * Gets the temperature from the API for the current time if it exists.
+     * Gets the temperature from the API for the current time if it exists. Override this for mocks.
      *
      * @return the temperature from the API for the current time, or null.
      */
-    fun getCurrentTemperature(): Double? {
+    open fun getCurrentTemperature(): Double? {
         return responses.lowerEntry(LocalDateTime.now(ZoneOffset.UTC))?.value?.get(temperatureKey)
     }
 
