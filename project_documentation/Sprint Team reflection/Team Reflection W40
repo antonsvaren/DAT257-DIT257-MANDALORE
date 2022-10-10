@@ -1,0 +1,51 @@
+Customer Value and Scope
+the chosen scope of the application under development including the priority of features and for whom you are creating value
+
+- Features that bring value to the customer are prioritized. Essential features are more important than extras.
+
+your user stories in terms of using a standard pattern, acceptance criteria, task breakdown and effort estimation and 
+how this influenced the way you worked and created value
+
+- User stories were written clearly with acceptance criterias, good task breakdown with small tasks.
+
+your acceptance tests, such as how they were performed, with whom, and which value they provided for you and the other stakeholders
+
+- Reviewing each others code, brings value to the person reviewing by giving them insight into more parts of code.
+
+the three KPIs you use for monitoring your progress and how you use them to improve your process
+
+- We needed to improve our estimation and planning looking at KPIs. Our methods for improving were unsuccessful.
+
+Social Contract and Effort
+the time you have spent on the course and how it relates to what you delivered (so keep track of your hours so you can describe the current situation)
+
+- If we spent more time helping each other we could have finished more tasks.
+
+Design decisions and product structure
+which technical documentation you use and why (e.g. use cases, interaction diagrams, class diagrams, domain models or component diagrams, text documents)
+
+- Figma is used to document design decisions.
+
+how you use and update your documentation throughout the sprints
+
+- Feedback from PO has been used to update figma prototype.
+
+how you ensure code quality and enforce coding standards
+
+- Reviewing pull requests.
+
+Application of Scrum
+the roles you have used within the team and their impact on your work
+
+- Stakeholder/PO: Feedback has been considered and impacted our prioritization.
+
+the agile practices you have used and their impact on your work
+
+- Sprint planning has made us divide work, retrospective and review has given us areas improve in,
+  several small meetings each week to see if someone needs help.
+
+the sprint review and how it relates to your scope and customer value (Did you have a PO, if yes, who?, if no, 
+how did you carry out the review? Did the review result in a re-prioritisation of user stories? 
+How did the reviews relate to your DoD? Did the feedback change your way of working?)
+
+- Yes we have a PO. Prioritized working on the UI more to give more customer value.
