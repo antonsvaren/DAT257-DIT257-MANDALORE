@@ -5,8 +5,7 @@ import java.util.concurrent.Future
 
 class MockWeatherService : WeatherService("Mock", "") {
     override fun parseResponse(response: JSONObject) {}
-
-    override fun update(lon: Float, lat: Float): Future<*>? {
+    override fun update(lon: String, lat: String): Future<*>? {
         return null
     }
 

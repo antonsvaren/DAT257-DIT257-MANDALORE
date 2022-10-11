@@ -17,7 +17,7 @@ class YrWeatherService :
         }
     }
 
-    override fun update(lon: Float, lat: Float): Future<*> {
+    override fun update(lon: String, lat: String): Future<*> {
         return request("compact?lon=$lon&lat=$lat")
     }
 }

@@ -25,21 +25,15 @@ abstract class WeatherService(
 ) {
     companion object {
         val services = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())
-        val cities = HashMap<String, Pair<Float, Float>>()
-
-        init {
-            cities["Gothenburg"] = Pair(11.9667F, 57.7F)
-            cities["Stockholm"] = Pair(18.0686F, 59.3295F)
-            cities["Malmö"] = Pair(13.0358F, 55.6058F)
-        }
 
         /**
-         * Gets a collection of supported city names in no particular order.
+         * Calls [update] on all [services] after converting the given city name to coordinates.
          *
-         * @return the collection of supported city names.
+         * @param city the English exonym for the city at which to get the weather.
          */
-        fun getCities(): Set<String> {
-            return cities.keys
+        fun updateAll(city: String) {
+            val (lon, lat) = cities[city]!!
+            services.map { it.update(lon, lat) }.forEach { it?.get() }
         }
     }
 
@@ -61,7 +55,7 @@ abstract class WeatherService(
      * @param lat the latitude at which to get the weather.
      * @return the [Future] for and parsing the result, or null
      */
-    abstract fun update(lon: Float, lat: Float): Future<*>?
+    abstract fun update(lon: String, lat: String): Future<*>?
 
     /**
      * Gets the temperature from the API for the current time if it exists. Override this for mocks.
@@ -90,17 +84,6 @@ abstract class WeatherService(
      */
     fun getTemperature(time: LocalDateTime): Double? {
         return responses.lowerEntry(time)?.value
-    }
-
-    /**
-     * Calls [update] after converting the given city name to coordinates.
-     *
-     * @param city the English exonym for the city at which to get the weather.
-     * @return the [Future] for and parsing the result, or null.
-     */
-    fun update(city: String): Future<*>? {
-        val (lon, lat) = cities[city]!!
-        return update(lon, lat)
     }
 
     /**
