@@ -24,8 +24,7 @@ abstract class WeatherService(
 ) {
     companion object {
         val services = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())
-        val executors = services.map(WeatherService::name)
-            .zip(services.map { Executors.newSingleThreadExecutor() }).toMap()
+        val executors = services.associate { it.name to Executors.newSingleThreadExecutor() }
 
         /**
          * Calls [update] on all [services] after converting the given city name to coordinates.
