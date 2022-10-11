@@ -23,7 +23,7 @@ class SMHIWeatherService : WeatherService(
         }
     }
 
-    override fun update(lon: String, lat: String): Future<*> {
+    override fun update(lon: String, lat: String): Future<*>? {
         return request("geotype/point/lon/$lon/lat/$lat/data.json")
     }
 }

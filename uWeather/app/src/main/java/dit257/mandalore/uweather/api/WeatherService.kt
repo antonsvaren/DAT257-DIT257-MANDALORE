@@ -8,7 +8,6 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.*
-import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
 import javax.net.ssl.HttpsURLConnection
@@ -25,6 +24,8 @@ abstract class WeatherService(
 ) {
     companion object {
         val services = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())
+        val executors = services.map(WeatherService::name)
+            .zip(services.map { Executors.newSingleThreadExecutor() }).toMap()
 
         /**
          * Calls [update] on all [services] after converting the given city name to coordinates.
@@ -38,7 +39,6 @@ abstract class WeatherService(
     }
 
     private val responses = TreeMap<LocalDateTime, Double>()
-    private val executor: ExecutorService = Executors.newSingleThreadExecutor()
 
     /**
      * Parses a JSON response from the API into [responses].
@@ -93,9 +93,9 @@ abstract class WeatherService(
      * @param endpoint the endpoint of the request added to [api].
      * @return the [Future] for calling the API and parsing the result.
      */
-    fun request(endpoint: String): Future<*> {
+    fun request(endpoint: String): Future<*>? {
         responses.clear()
-        return executor.submit {
+        return executors[name]?.submit {
             val connection = URL("$api/$endpoint").openConnection() as HttpsURLConnection
             try {
                 // Needed for yr.no; doesn't hurt for other services
