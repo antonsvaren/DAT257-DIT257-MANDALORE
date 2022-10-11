@@ -28,14 +28,6 @@
         android:text="@string/climate_topic_2"
         android:textSize="16sp"
         android:textColor="@color/gray"/>
-    <TextView
-        android:layout_width="330dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="240dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/climate_topic_2"
-        android:textSize="16sp"
-        android:textColor="@color/gray"/>
     <View
         android:layout_width="105dp"
         android:layout_marginLeft="40dp"

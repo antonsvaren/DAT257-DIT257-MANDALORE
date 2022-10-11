@@ -1,72 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ScrollingActivity"
     >
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:fitsSystemWindows="true"
-        android:theme="@style/Theme.UWeather.AppBarOverlay">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:background="@color/white"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/climate"
-                android:textColor="#23036A"
-                android:textFontWeight="400"
-                android:textSize="36sp"
-                />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/climateInfoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:background="@color/white"
 
         app:srcCompat="@drawable/what_is_climate_change" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/causeInfoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="305dp"
+        android:layout_marginTop="245dp"
         android:background="@color/white"
         app:srcCompat="@drawable/cause_of_climate_change"
     />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/actionInfoButton"
         android:layout_width="335dp"
         android:layout_height="190dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="510dp"
+        android:layout_marginTop="450dp"
         android:background="@color/white"
         app:srcCompat="@drawable/action_to_focus_on" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>
