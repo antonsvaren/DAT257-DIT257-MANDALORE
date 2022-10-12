@@ -27,10 +27,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         replaceFragment(FirstFragment())
 
+
        binding.bottomNavigationView.setOnItemSelectedListener {
            when(it.itemId){
                R.id.weather -> replaceFragment(FirstFragment())
-               R.id.climate -> replaceFragment(SecondFragment())
+               R.id.climate -> replaceFragment(ClimateFragment()/*SecondFragment()*/)
                else ->{
                }
            }

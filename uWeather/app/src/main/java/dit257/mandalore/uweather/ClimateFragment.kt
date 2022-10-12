@@ -29,10 +29,10 @@ class ClimateFragment : Fragment() {
             //TODO navigate to fragment about climate change
         }
         binding.causeInfoButton.setOnClickListener{
-            //TODO navigate to fragment about climate change
+            //TODO navigate to fragment about climate cause
         }
         binding.actionInfoButton.setOnClickListener{
-            //TODO navigate to fragment about climate change
+            //TODO navigate to fragment about climate action
         }
     }
 
@@ -40,5 +40,4 @@ class ClimateFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }
