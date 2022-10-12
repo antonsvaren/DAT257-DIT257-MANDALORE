@@ -32,9 +32,13 @@ class ClimateFragment : Fragment() {
         }
         binding.causeInfoButton.setOnClickListener{
             val nextFragment = ClimateCauseFragment()
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frame_layout, nextFragment)?.commit()
         }
         binding.actionInfoButton.setOnClickListener{
             val nextFragment = ClimateActionFragment()
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frame_layout, nextFragment)?.commit()
         }
     }
 

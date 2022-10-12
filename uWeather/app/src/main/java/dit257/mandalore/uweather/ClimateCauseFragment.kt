@@ -6,14 +6,37 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dit257.mandalore.uweather.R
+import dit257.mandalore.uweather.databinding.ClimateActionInfoBinding
+import dit257.mandalore.uweather.databinding.ClimateCauseInfoBinding
 
 class ClimateCauseFragment : Fragment() {
+
+    private var _binding: ClimateCauseInfoBinding? = null
+
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.climate_cause_info, container, false)
+        _binding = ClimateCauseInfoBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonBack.setOnClickListener{
+            val nextFragment = ClimateFragment()
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frame_layout, nextFragment)?.commit()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
