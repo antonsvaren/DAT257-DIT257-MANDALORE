@@ -6,6 +6,8 @@ import dit257.mandalore.uweather.databinding.FragmentClimateBinding
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dit257.mandalore.uweather.api.ClimateActionFragment
+import dit257.mandalore.uweather.api.ClimateCauseFragment
 
 class ClimateFragment : Fragment() {
 
@@ -26,13 +28,15 @@ class ClimateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.climateInfoButton.setOnClickListener{
-            //TODO navigate to fragment about climate change
+            val nextFragment = ClimateChangeFragment()
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frame_layout, nextFragment)?.commit()
         }
         binding.causeInfoButton.setOnClickListener{
-            //TODO navigate to fragment about climate change
+            val nextFragment = ClimateCauseFragment()
         }
         binding.actionInfoButton.setOnClickListener{
-            //TODO navigate to fragment about climate change
+            val nextFragment = ClimateActionFragment()
         }
     }
 
