@@ -25,7 +25,6 @@ class LoadingActivity : AppCompatActivity() {
         // Create 10mb response cache
         HttpResponseCache.install(File(cacheDir, "http"), 10485760)
 
-        WeatherService.services.map { service -> service.update("Gothenburg") }
-            .forEach { future -> future?.get() }
+        WeatherService.updateAll("Gothenburg")
     }
 }
