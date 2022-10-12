@@ -9,7 +9,7 @@ class YrWeatherService :
         val timeSeries = response.getJSONObject("properties").getJSONArray("timeseries")
         for (i in 0 until timeSeries.length()) {
             val timeObject = timeSeries.getJSONObject(i)
-            addData(
+            setTemperature(
                 timeObject.getString("time"),
                 timeObject.getJSONObject("data").getJSONObject("instant").getJSONObject("details")
                     .getDouble("air_temperature")
@@ -17,7 +17,7 @@ class YrWeatherService :
         }
     }
 
-    override fun update(lon: String, lat: String): Future<*>? {
+    override fun update(lon: String, lat: String): Future<*> {
         return request("compact?lon=$lon&lat=$lat")
     }
 }

@@ -24,7 +24,6 @@ abstract class WeatherService(
 ) {
     companion object {
         val services = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())
-        val executors = services.associate { it.name to Executors.newSingleThreadExecutor() }
 
         /**
          * Calls [update] on all [services] after converting the given city name to coordinates.
@@ -38,6 +37,7 @@ abstract class WeatherService(
     }
 
     private val responses = TreeMap<LocalDateTime, Double>()
+    private val executor = Executors.newSingleThreadExecutor()
 
     /**
      * Parses a JSON response from the API into [responses].
@@ -66,16 +66,6 @@ abstract class WeatherService(
     }
 
     /**
-     * Stores the data in [responses] after parsing the given time into a [LocalDateTime] object.
-     *
-     * @param time the raw zoned ISO time for when the data becomes valid.
-     * @param temperature the temperature from the API.
-     */
-    fun addData(time: String, temperature: Double) {
-        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = temperature
-    }
-
-    /**
      * Gets the temperature from the API for the given time if it exists.
      *
      * @param time the time to get the temperature for.
@@ -86,15 +76,24 @@ abstract class WeatherService(
     }
 
     /**
+     * Sets the data in [responses] after parsing the given time into a [LocalDateTime] object.
+     *
+     * @param time the raw zoned ISO time for when the data becomes valid.
+     * @param temperature the temperature from the API.
+     */
+    fun setTemperature(time: String, temperature: Double) {
+        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = temperature
+    }
+
+    /**
      * Sends a request asynchronously to the given endpoint and calls [parseResponse] with the
      * result.
      *
      * @param endpoint the endpoint of the request added to [api].
      * @return the [Future] for calling the API and parsing the result.
      */
-    fun request(endpoint: String): Future<*>? {
-        responses.clear()
-        return executors[name]?.submit {
+    fun request(endpoint: String): Future<*> {
+        return executor.submit {
             val connection = URL("$api/$endpoint").openConnection() as HttpsURLConnection
             try {
                 // Needed for yr.no; doesn't hurt for other services
