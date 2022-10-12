@@ -8,7 +8,6 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.*
-import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
 import javax.net.ssl.HttpsURLConnection
@@ -19,33 +18,26 @@ import javax.net.ssl.HttpsURLConnection
  * @property name the human-readable name for the implemented weather service.
  * @property api the base url for the API sans the request endpoints of the implemented weather
  * service.
- * @property temperatureKey the key under which temperature is stored.
  */
 abstract class WeatherService(
-    val name: String, private val api: String, private val temperatureKey: String
+    val name: String, private val api: String
 ) {
     companion object {
         val services = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())
-        val cities = HashMap<String, Pair<Float, Float>>()
-
-        init {
-            cities["Gothenburg"] = Pair(11.9667F, 57.7F)
-            cities["Stockholm"] = Pair(18.0686F, 59.3295F)
-            cities["Malmö"] = Pair(13.0358F, 55.6058F)
-        }
 
         /**
-         * Gets a collection of supported city names in no particular order.
+         * Calls [update] on all [services] after converting the given city name to coordinates.
          *
-         * @return the collection of supported city names.
+         * @param city the English exonym for the city at which to get the weather.
          */
-        fun getCities(): Set<String> {
-            return cities.keys
+        fun updateAll(city: String) {
+            val (lon, lat) = cities[city]!!
+            services.map { it.update(lon, lat) }.forEach { it?.get() }
         }
     }
 
-    private val responses = TreeMap<LocalDateTime, Map<String, Double>>()
-    private val executor: ExecutorService = Executors.newSingleThreadExecutor()
+    private val responses = TreeMap<LocalDateTime, Double>()
+    private val executor = Executors.newSingleThreadExecutor()
 
     /**
      * Parses a JSON response from the API into [responses].
@@ -62,17 +54,7 @@ abstract class WeatherService(
      * @param lat the latitude at which to get the weather.
      * @return the [Future] for and parsing the result, or null
      */
-    abstract fun update(lon: Float, lat: Float): Future<*>?
-
-    /**
-     * Stores the data in [responses] after parsing the given time into a [LocalDateTime] object.
-     *
-     * @param time the raw zoned ISO time for when the data becomes valid.
-     * @param data the data from the API.
-     */
-    fun addData(time: String, data: Map<String, Double>) {
-        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = data
-    }
+    abstract fun update(lon: String, lat: String): Future<*>?
 
     /**
      * Gets the temperature from the API for the current time if it exists. Override this for mocks.
@@ -80,18 +62,27 @@ abstract class WeatherService(
      * @return the temperature from the API for the current time, or null.
      */
     open fun getCurrentTemperature(): Double? {
-        return responses.lowerEntry(LocalDateTime.now(ZoneOffset.UTC))?.value?.get(temperatureKey)
+        return getTemperature(LocalDateTime.now(ZoneOffset.UTC))
     }
 
     /**
-     * Calls [update] after converting the given city name to coordinates.
+     * Gets the temperature from the API for the given time if it exists.
      *
-     * @param city the English exonym for the city at which to get the weather.
-     * @return the [Future] for and parsing the result, or null.
+     * @param time the time to get the temperature for.
+     * @return the temperature from the API for the given time, or null.
      */
-    fun update(city: String): Future<*>? {
-        val (lon, lat) = cities[city]!!
-        return update(lon, lat)
+    fun getTemperature(time: LocalDateTime): Double? {
+        return responses.lowerEntry(time)?.value
+    }
+
+    /**
+     * Sets the data in [responses] after parsing the given time into a [LocalDateTime] object.
+     *
+     * @param time the raw zoned ISO time for when the data becomes valid.
+     * @param temperature the temperature from the API.
+     */
+    fun setTemperature(time: String, temperature: Double) {
+        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = temperature
     }
 
     /**
@@ -102,7 +93,6 @@ abstract class WeatherService(
      * @return the [Future] for calling the API and parsing the result.
      */
     fun request(endpoint: String): Future<*> {
-        responses.clear()
         return executor.submit {
             val connection = URL("$api/$endpoint").openConnection() as HttpsURLConnection
             try {
