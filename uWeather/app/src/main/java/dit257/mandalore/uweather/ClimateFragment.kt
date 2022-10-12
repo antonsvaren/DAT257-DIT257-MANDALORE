@@ -6,8 +6,6 @@ import dit257.mandalore.uweather.databinding.FragmentClimateBinding
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import dit257.mandalore.uweather.api.ClimateActionFragment
-import dit257.mandalore.uweather.api.ClimateCauseFragment
 
 class ClimateFragment : Fragment() {
 
