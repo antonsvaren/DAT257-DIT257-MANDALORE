@@ -21,6 +21,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="55dp"
+            android:layout_height="54dp"
+            android:background="@color/white"
+            android:src="@drawable/back_arrow"/>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -28,15 +35,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:src="@drawable/cause_of_climate_change_info" />
-
-    <ImageButton
-        android:id="@+id/buttonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="46dp"
-        android:background="@color/purple_100"
-        android:src="@drawable/back_arrow" />
 
     <TextView
         android:layout_width="330dp"
