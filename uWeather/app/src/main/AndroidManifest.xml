@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,8 +14,15 @@
         android:theme="@style/Theme.UWeather"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity">
+            android:name=".ScrollingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/Theme.UWeather.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".LoadingActivity"
             android:exported="true"
