@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:src="@drawable/climate_action_icon" />
+        android:src="@drawable/climate_action_info" />
 
     <ImageButton
         android:id="@+id/buttonBack"
@@ -18,7 +18,7 @@
         android:layout_marginTop="46dp"
         android:layout_marginLeft="48dp"
         android:background="@color/purple_100"
-        android:src="@drawable/arrow" />
+        android:src="@drawable/back_arrow" />
 
     <TextView
         android:layout_width="330dp"

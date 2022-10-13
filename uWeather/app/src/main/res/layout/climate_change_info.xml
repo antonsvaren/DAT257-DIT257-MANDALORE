@@ -18,7 +18,7 @@
         android:layout_marginTop="46dp"
         android:layout_marginLeft="48dp"
         android:background="@color/purple_100"
-        android:src="@drawable/arrow" />
+        android:src="@drawable/back_arrow" />
 
     <TextView
         android:layout_width="330dp"
