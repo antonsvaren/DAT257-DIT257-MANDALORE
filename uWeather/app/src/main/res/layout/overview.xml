@@ -8,19 +8,6 @@
     tools:context=".MainActivity"
     android:background="#00008B">
 
-
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:queryHint="Search for a city"
-        android:iconifiedByDefault="false"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/searchview_background"
-        android:backgroundTint="@color/white"/>
-
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
