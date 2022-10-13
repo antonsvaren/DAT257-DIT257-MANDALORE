@@ -15,7 +15,7 @@ class SMHIWeatherService : WeatherService(
             for (j in 0 until parameters.length()) {
                 val parameter = parameters.getJSONObject(j)
                 if (parameter.getString("name").equals("t")) {
-                    addData(time, parameter.getJSONArray("values").getDouble(0))
+                    setTemperature(time, parameter.getJSONArray("values").getDouble(0))
                     break
                 }
             }

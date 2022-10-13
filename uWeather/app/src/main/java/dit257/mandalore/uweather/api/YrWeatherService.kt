@@ -9,7 +9,7 @@ class YrWeatherService :
         val timeSeries = response.getJSONObject("properties").getJSONArray("timeseries")
         for (i in 0 until timeSeries.length()) {
             val timeObject = timeSeries.getJSONObject(i)
-            addData(
+            setTemperature(
                 timeObject.getString("time"),
                 timeObject.getJSONObject("data").getJSONObject("instant").getJSONObject("details")
                     .getDouble("air_temperature")

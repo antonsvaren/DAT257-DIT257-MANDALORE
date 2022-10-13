@@ -8,7 +8,6 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.*
-import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
 import javax.net.ssl.HttpsURLConnection
@@ -38,7 +37,7 @@ abstract class WeatherService(
     }
 
     private val responses = TreeMap<LocalDateTime, Double>()
-    private val executor: ExecutorService = Executors.newSingleThreadExecutor()
+    private val executor = Executors.newSingleThreadExecutor()
 
     /**
      * Parses a JSON response from the API into [responses].
@@ -67,16 +66,6 @@ abstract class WeatherService(
     }
 
     /**
-     * Stores the data in [responses] after parsing the given time into a [LocalDateTime] object.
-     *
-     * @param time the raw zoned ISO time for when the data becomes valid.
-     * @param temperature the temperature from the API.
-     */
-    fun addData(time: String, temperature: Double) {
-        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = temperature
-    }
-
-    /**
      * Gets the temperature from the API for the given time if it exists.
      *
      * @param time the time to get the temperature for.
@@ -87,6 +76,16 @@ abstract class WeatherService(
     }
 
     /**
+     * Sets the data in [responses] after parsing the given time into a [LocalDateTime] object.
+     *
+     * @param time the raw zoned ISO time for when the data becomes valid.
+     * @param temperature the temperature from the API.
+     */
+    fun setTemperature(time: String, temperature: Double) {
+        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = temperature
+    }
+
+    /**
      * Sends a request asynchronously to the given endpoint and calls [parseResponse] with the
      * result.
      *
@@ -94,7 +93,6 @@ abstract class WeatherService(
      * @return the [Future] for calling the API and parsing the result.
      */
     fun request(endpoint: String): Future<*> {
-        responses.clear()
         return executor.submit {
             val connection = URL("$api/$endpoint").openConnection() as HttpsURLConnection
             try {
