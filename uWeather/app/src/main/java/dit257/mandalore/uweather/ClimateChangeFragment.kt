@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dit257.mandalore.uweather.databinding.ClimateActionInfoBinding
 import dit257.mandalore.uweather.databinding.ClimateChangeInfoBinding
-
+// This is the page for the climate change. The only logic in here is the fragment switching
 class ClimateChangeFragment : Fragment() {
 
     private var _binding: ClimateChangeInfoBinding? = null

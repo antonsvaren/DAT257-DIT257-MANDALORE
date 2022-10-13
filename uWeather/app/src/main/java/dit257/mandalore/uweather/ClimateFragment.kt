@@ -6,7 +6,7 @@ import dit257.mandalore.uweather.databinding.FragmentClimateBinding
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+// This is the fragment for the climate page. The only logic in here is for the different buttons and where they will take you.
 class ClimateFragment : Fragment() {
 
     private var _binding: FragmentClimateBinding? = null
@@ -24,16 +24,18 @@ class ClimateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //Switching from fragment "ClimateFragment" to "ClimateChangeFragment"
         binding.climateInfoButton.setOnClickListener{
             val nextFragment = ClimateChangeFragment()
             val transaction = fragmentManager?.beginTransaction()
             transaction?.replace(R.id.frame_layout, nextFragment)?.commit()
         }
+        //Switching from fragment "ClimateFragment" to "ClimateCauseFragment"
         binding.causeInfoButton.setOnClickListener{
             val nextFragment = ClimateCauseFragment()
             val transaction = fragmentManager?.beginTransaction()
             transaction?.replace(R.id.frame_layout, nextFragment)?.commit()
+        //Switching from fragment "ClimateFragment" to "ClimateActionFragment"
         }
         binding.actionInfoButton.setOnClickListener{
             val nextFragment = ClimateActionFragment()

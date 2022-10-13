@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import dit257.mandalore.uweather.R
 import dit257.mandalore.uweather.databinding.ClimateActionInfoBinding
 import dit257.mandalore.uweather.databinding.ClimateCauseInfoBinding
-
+// This is the page for the climate cause. The only logic in here is the fragment switching
 class ClimateCauseFragment : Fragment() {
 
     private var _binding: ClimateCauseInfoBinding? = null
