@@ -1,5 +1,6 @@
 package dit257.mandalore.uweather.api
 
+import dit257.mandalore.uweather.manager.CitiesManager
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException

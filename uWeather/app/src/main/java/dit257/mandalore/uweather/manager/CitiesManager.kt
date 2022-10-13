@@ -1,4 +1,4 @@
-package dit257.mandalore.uweather.api
+package dit257.mandalore.uweather.manager
 
 class CitiesManager {
     companion object {
@@ -135,7 +135,8 @@ class CitiesManager {
             Pair("Öregrund", Pair("18.4333", "60.3333")),
             Pair("Örnsköldsvik", Pair("18.7156", "63.2908")),
             Pair("Östersund", Pair("14.6358", "63.1792")),
-            Pair("Östhammar", Pair("18.3667", "60.2667"))
+            Pair("Östhammar", Pair("18.3667", "60.2667")),
+            Pair("Stockholm", Pair("18.0686", "59.3294"))
         )
 
         /**

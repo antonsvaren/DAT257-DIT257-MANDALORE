@@ -1,4 +1,4 @@
-package dit257.mandalore.uweather.api
+package dit257.mandalore.uweather.manager
 
 import android.content.Context
 import android.content.SharedPreferences
