@@ -39,6 +39,22 @@ class FirstFragment : Fragment() {
         }.joinToString("\n")
 
         binding.textviewFirst.text = weatherString
+
+        val p = Probability()
+        val allServices = WeatherService.services.toList()
+        val allCurrentTemps = doubleArrayOf(0.0, 0.0, 0.0)
+        for(i in allServices.indices){
+            allCurrentTemps[i] = allServices[i].getCurrentTemperature()!!
+        }
+
+        binding.textviewProb.text = WeatherService.services.map { service ->
+            val name = service.name
+            val temperature = service.getCurrentTemperature()
+            val prob = Math.round(p.calcMean(allCurrentTemps, temperature!!)*100)
+            "$name: $temperature Probability: $prob%"
+        }.joinToString("\n")
+
+        binding.textviewProb.text = (p.confidenceInterval(allCurrentTemps)).plus("\nwith an accuracy of 90%")
     }
 
     override fun onDestroyView() {
