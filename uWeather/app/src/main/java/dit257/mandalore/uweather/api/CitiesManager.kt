@@ -1,5 +1,6 @@
 package dit257.mandalore.uweather.api
 
+
 val cities = mapOf(
     Pair("Alingsås", Pair("12.5331", "57.93")),
     Pair("Arboga", Pair("15.8386", "59.3939")),
