@@ -5,6 +5,7 @@ import android.net.http.HttpResponseCache
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import dit257.mandalore.uweather.api.PreferencesManager
 import dit257.mandalore.uweather.api.WeatherService
 import java.io.File
 
@@ -25,6 +26,6 @@ class LoadingActivity : AppCompatActivity() {
         // Create 10mb response cache
         HttpResponseCache.install(File(cacheDir, "http"), 10485760)
 
-        WeatherService.updateAll("Gothenburg")
+        WeatherService.updateAll(PreferencesManager.getSelectedCity(this)!!)
     }
 }

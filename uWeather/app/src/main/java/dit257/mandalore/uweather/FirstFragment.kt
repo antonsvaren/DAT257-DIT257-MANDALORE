@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import dit257.mandalore.uweather.api.PreferencesManager
 import dit257.mandalore.uweather.api.WeatherService
 import dit257.mandalore.uweather.databinding.FragmentFirstBinding
 
@@ -38,7 +38,8 @@ class FirstFragment : Fragment() {
             "$name: $temperature"
         }.joinToString("\n")
 
-        binding.textviewFirst.text = weatherString
+        binding.textviewFirst.text =
+            PreferencesManager.getSelectedCity(view.context) + "\n" + weatherString
     }
 
     override fun onDestroyView() {

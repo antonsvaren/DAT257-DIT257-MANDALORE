@@ -31,7 +31,7 @@ abstract class WeatherService(
          * @param city the English exonym for the city at which to get the weather.
          */
         fun updateAll(city: String) {
-            val (lon, lat) = cities[city]!!
+            val (lon, lat) = CitiesManager.getCoordinates(city)!!
             services.map { it.update(lon, lat) }.forEach { it?.get() }
         }
     }

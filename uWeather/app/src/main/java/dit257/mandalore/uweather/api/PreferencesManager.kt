@@ -2,17 +2,24 @@ package dit257.mandalore.uweather.api
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.jakewharton.processphoenix.ProcessPhoenix
 
-private const val selectedCityKey = "selected_city"
 
-private fun getPreferences(context: Context): SharedPreferences {
-   return context.getSharedPreferences("uWeather", Context.MODE_PRIVATE)
-}
+class PreferencesManager {
+    companion object {
+        private const val selectedCityKey = "selected_city"
 
-fun getSelectedCity(context: Context): String? {
-    return getPreferences(context).getString(selectedCityKey, "Gothenburg")
-}
+        private fun getPreferences(context: Context): SharedPreferences {
+            return context.getSharedPreferences("uWeather", Context.MODE_PRIVATE)
+        }
 
-fun setSelectedCity(context: Context, city: String) {
-    getPreferences(context).edit().putString(selectedCityKey, city).apply()
+        fun getSelectedCity(context: Context): String? {
+            return getPreferences(context).getString(selectedCityKey, "Gothenburg")
+        }
+
+        fun setSelectedCity(context: Context, city: String) {
+            getPreferences(context).edit().putString(selectedCityKey, city).apply()
+            ProcessPhoenix.triggerRebirth(context)
+        }
+    }
 }

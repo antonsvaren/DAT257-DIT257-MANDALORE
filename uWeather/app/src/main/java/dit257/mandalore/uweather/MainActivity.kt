@@ -2,21 +2,15 @@ package dit257.mandalore.uweather
 
 import android.net.http.HttpResponseCache
 import android.os.Bundle
-import android.text.TextUtils.replace
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
+import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.fragment.app.*
-import dit257.mandalore.uweather.api.getCities
-import dit257.mandalore.uweather.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.ui.AppBarConfiguration
+import dit257.mandalore.uweather.api.CitiesManager
+import dit257.mandalore.uweather.api.PreferencesManager
 import dit257.mandalore.uweather.databinding.ContentMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -32,10 +26,10 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(FirstFragment())
 
         binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.weather -> replaceFragment(FirstFragment())
                 R.id.climate -> replaceFragment(SecondFragment())
-                else ->{
+                else -> {
                 }
             }
             true
@@ -48,34 +42,44 @@ class MainActivity : AppCompatActivity() {
         //appBarConfiguration = AppBarConfiguration(navController.graph)
         //setupActionBarWithNavController(navController, appBarConfiguration)
 
-        val user = getCities().toList()
+        val cities = CitiesManager.getCities()
 
-        val userAdapter: ArrayAdapter<String> = ArrayAdapter(
-            this, android.R.layout.simple_dropdown_item_1line,
-            user
+        binding.searchBox.setAdapter(
+            ArrayAdapter(
+                this, android.R.layout.simple_selectable_list_item,
+                cities.toList()
+            )
         )
-
-        binding.searchBox.setAdapter(userAdapter)
         binding.searchBox.threshold = 1
-        binding.searchBox.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                // use new city: user[position]
+        binding.searchBox.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, _, position, _ ->
+                PreferencesManager.setSelectedCity(
+                    this@MainActivity,
+                    parent?.getItemAtPosition(position) as String
+                )
+                binding.searchBox.setText("")
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        binding.searchBox.setOnKeyListener { _: View?, keyCode: Int, _: KeyEvent? ->
+            if (KeyEvent.KEYCODE_ENTER == keyCode) {
+                val selected = binding.searchBox.text.toString().replaceFirstChar { it.uppercase() }
+                if (cities.contains(selected)) {
+                    PreferencesManager.setSelectedCity(
+                        this@MainActivity,
+                        selected
+                    )
+                    binding.searchBox.setText("")
+                }
+                true
+            }
+            false
         }
     }
 
-    private fun replaceFragment(fragment: Fragment){
+    private fun replaceFragment(fragment: Fragment) {
 
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout,fragment)
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
     }
 /*
