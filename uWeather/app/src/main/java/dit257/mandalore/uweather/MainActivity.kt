@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.searchBox.setAdapter(
             ArrayAdapter(
-                this, android.R.layout.simple_selectable_list_item,
+                this, android.R.layout.simple_dropdown_item_1line,
                 cities.toList()
             )
         )
@@ -55,21 +55,17 @@ class MainActivity : AppCompatActivity() {
             AdapterView.OnItemClickListener { parent, _, position, _ ->
                 PreferencesManager.setSelectedCity(
                     this@MainActivity,
-                    parent?.getItemAtPosition(position) as String
+                    parent?.getItemAtPosition(position).toString()
                 )
-                binding.searchBox.setText("")
             }
         binding.searchBox.setOnKeyListener { _: View?, keyCode: Int, _: KeyEvent? ->
             if (KeyEvent.KEYCODE_ENTER == keyCode) {
-                val selected = binding.searchBox.text.toString().replaceFirstChar { it.uppercase() }
-                if (cities.contains(selected)) {
+                if (binding.searchBox.text.isNotEmpty() && !binding.searchBox.adapter.isEmpty)
                     PreferencesManager.setSelectedCity(
                         this@MainActivity,
-                        selected
+                        binding.searchBox.adapter.getItem(0).toString()
                     )
-                    binding.searchBox.setText("")
-                }
-                true
+                return@setOnKeyListener true
             }
             false
         }
