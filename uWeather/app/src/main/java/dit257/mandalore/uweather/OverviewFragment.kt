@@ -30,17 +30,18 @@ class OverviewFragment : Fragment() {
 
         binding.city.text = PreferencesManager.getSelectedCity(view.context)
 
-        WeatherService.services.map { service ->
-            val name = service.name
-            val temperature = service.getCurrentTemperature()
-            if(name=="SMHI"){
-                binding.smhitemp.text = "$temperature"
-            }
-            else if(name=="Yr"){
-                binding.yrtemp.text = "$temperature"
-            }
-            else if(name=="Mock"){
-                binding.mocktemp.text = "$temperature"
+        WeatherService.services.forEach {
+            val temperature = it.getCurrentTemperature()
+            when (it.name) {
+                "SMHI" -> {
+                    binding.smhitemp.text = "$temperature"
+                }
+                "Yr" -> {
+                    binding.yrtemp.text = "$temperature"
+                }
+                "Mock" -> {
+                    binding.mocktemp.text = "$temperature"
+                }
             }
         }
     }
