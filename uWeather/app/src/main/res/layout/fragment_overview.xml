@@ -51,10 +51,103 @@
         android:textSize="16dp" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="340dp"
-        app:srcCompat="@drawable/continue_city_forecast" />
+        android:id="@+id/imageView2"
+        android:layout_width="410dp"
+        android:background="@color/purple_900"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="350dp"
+        app:srcCompat="@drawable/hourly_forecast" />
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="435dp"
+        android:textAlignment="center"
+        android:text="@string/time1"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
 
+    <TextView
+        android:layout_width="45dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="435dp"
+        android:textAlignment="center"
+        android:text="@string/time2"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+    <TextView
+        android:layout_width="45dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="435dp"
+        android:textAlignment="center"
+        android:text="@string/time3"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+    <TextView
+        android:layout_width="45dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="252dp"
+        android:layout_marginTop="435dp"
+        android:textAlignment="center"
+        android:text="@string/time4"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+    <TextView
+        android:layout_width="45dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="322dp"
+        android:layout_marginTop="435dp"
+        android:textAlignment="center"
+        android:text="@string/time5"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="515dp"
+        android:textAlignment="center"
+        android:text="@string/degrees1"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="117dp"
+        android:layout_marginTop="515dp"
+        android:textAlignment="center"
+        android:text="@string/degrees2"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="187dp"
+        android:layout_marginTop="515dp"
+        android:textAlignment="center"
+        android:text="@string/degrees3"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="257dp"
+        android:layout_marginTop="515dp"
+        android:textAlignment="center"
+        android:text="@string/degrees4"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="326dp"
+        android:layout_marginTop="515dp"
+        android:textAlignment="center"
+        android:text="@string/degrees4"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
 </FrameLayout>

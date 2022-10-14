@@ -119,6 +119,18 @@
     <string name="degrees">15°</string>
     <string name="weather">Cloudy</string>
     <string name="high_to_low_degrees">H:  18°  L: 10°</string>
+    <string name="time1">9AM</string>
+    <string name="time2">10AM</string>
+    <string name="time3">11AM</string>
+    <string name="time4">12PM</string>
+    <string name="time5">13PM</string>
+    <string name="degrees1">15°</string>
+    <string name="degrees2">14°</string>
+    <string name="degrees3">16°</string>
+    <string name="degrees4">15°</string>
+    <string name="degrees5">15°</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="smhi">SMHI</string>
