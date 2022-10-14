@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dit257.mandalore.uweather.manager.PreferencesManager
 import dit257.mandalore.uweather.api.WeatherService
 import dit257.mandalore.uweather.databinding.FragmentOverviewBinding
+import dit257.mandalore.uweather.manager.PreferencesManager
 
 class OverviewFragment : Fragment() {
     private var _binding: FragmentOverviewBinding? = null
@@ -30,20 +30,9 @@ class OverviewFragment : Fragment() {
 
         binding.city.text = PreferencesManager.getSelectedCity(view.context)
 
-        WeatherService.services.forEach {
-            val temperature = it.getCurrentTemperature()
-            when (it.name) {
-                "SMHI" -> {
-                    binding.smhitemp.text = "$temperature"
-                }
-                "Yr" -> {
-                    binding.yrtemp.text = "$temperature"
-                }
-                "Mock" -> {
-                    binding.mocktemp.text = "$temperature"
-                }
-            }
-        }
+        val meanTemp =
+            "%.1f".format(WeatherService.services.map { it.getCurrentTemperature()!! }.average())
+        binding.degrees.text = "$meanTemp°"
     }
 
     override fun onDestroyView() {

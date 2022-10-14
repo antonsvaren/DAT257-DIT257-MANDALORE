@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,69 +8,53 @@
         android:id="@+id/city"
         android:layout_width="300dp"
         android:layout_height="70dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
         android:textAlignment="center"
-        android:text="Göteborg"
+        android:text="@string/city"
         android:textColor="@color/purple_700"
         android:textSize="48dp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/degrees"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="170dp"
+        android:textAlignment="center"
+        android:text="@string/degrees"
+        android:textColor="@color/purple_700"
+        android:textSize="48dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/weather"
+        android:layout_width="300dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="230dp"
+        android:textAlignment="center"
+        android:text="@string/weather"
+        android:textColor="@color/purple_700"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/high_to_low_degrees"
+        android:layout_width="300dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="270dp"
+        android:textAlignment="center"
+        android:text="@string/high_to_low_degrees"
+        android:textColor="@color/purple_700"
+        android:textSize="16dp" />
+
     <ImageView
-        android:id="@+id/smhilogo"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="240dp"
-        android:foreground="@mipmap/smhi_logo_foreground" />
-
-    <TextView
-        android:id="@+id/smhitemp"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="240dp"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/yrlogo"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="55dp"
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="340dp"
-        android:foreground="@mipmap/yr_logo_foreground" />
-
-    <TextView
-        android:id="@+id/yrtemp"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="340dp"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/mocktext"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="440dp"
-        android:text="@string/mock"
-        android:textAlignment="center"
-        android:textSize="45sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/mocktemp"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="440dp"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        app:srcCompat="@drawable/continue_city_forecast" />
 
 </FrameLayout>
