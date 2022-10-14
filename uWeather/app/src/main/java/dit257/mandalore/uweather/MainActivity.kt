@@ -9,9 +9,9 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.ui.AppBarConfiguration
-import dit257.mandalore.uweather.api.CitiesManager
-import dit257.mandalore.uweather.api.PreferencesManager
 import dit257.mandalore.uweather.databinding.ContentMainBinding
+import dit257.mandalore.uweather.manager.CitiesManager
+import dit257.mandalore.uweather.manager.PreferencesManager
 
 class MainActivity : AppCompatActivity() {
 

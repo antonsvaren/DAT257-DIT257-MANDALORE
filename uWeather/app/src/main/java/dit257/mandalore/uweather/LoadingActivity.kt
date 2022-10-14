@@ -5,8 +5,8 @@ import android.net.http.HttpResponseCache
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import dit257.mandalore.uweather.api.PreferencesManager
 import dit257.mandalore.uweather.api.WeatherService
+import dit257.mandalore.uweather.manager.PreferencesManager
 import java.io.File
 
 
