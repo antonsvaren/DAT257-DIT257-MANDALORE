@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dit257.mandalore.uweather.api.PreferencesManager
+import dit257.mandalore.uweather.manager.PreferencesManager
 import dit257.mandalore.uweather.api.WeatherService
 import dit257.mandalore.uweather.databinding.FragmentOverviewBinding
 
