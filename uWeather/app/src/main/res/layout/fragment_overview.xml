@@ -10,7 +10,9 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="150dp"
         android:textAlignment="center"
-        android:textSize="40sp"
+        android:text="Göteborg"
+        android:textColor="@color/purple_700"
+        android:textSize="48dp"
         android:textStyle="bold" />
 
     <ImageView
