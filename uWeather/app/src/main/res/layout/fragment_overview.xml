@@ -13,7 +13,7 @@
         android:textAlignment="center"
         android:text="@string/city"
         android:textColor="@color/purple_700"
-        android:textSize="48dp"
+        android:textSize="48sp"
         android:textStyle="bold" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:textAlignment="center"
         android:text="@string/degrees"
         android:textColor="@color/purple_700"
-        android:textSize="48dp"
+        android:textSize="48sp"
         android:textStyle="bold" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:textAlignment="center"
         android:text="@string/weather"
         android:textColor="@color/purple_700"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/high_to_low_degrees"
@@ -48,7 +48,7 @@
         android:textAlignment="center"
         android:text="@string/high_to_low_degrees"
         android:textColor="@color/purple_700"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -59,25 +59,28 @@
         android:layout_marginTop="350dp"
         app:srcCompat="@drawable/hourly_forecast" />
     <TextView
+        android:id="@+id/time1"
         android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="435dp"
         android:textAlignment="center"
         android:text="@string/time1"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
 
     <TextView
+        android:id="@+id/time2"
         android:layout_width="45dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="112dp"
+        android:layout_marginStart="112dp"
         android:layout_marginTop="435dp"
         android:textAlignment="center"
         android:text="@string/time2"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
     <TextView
+        android:id="@+id/time3"
         android:layout_width="45dp"
         android:layout_height="25dp"
         android:layout_gravity="center_horizontal"
@@ -85,69 +88,76 @@
         android:textAlignment="center"
         android:text="@string/time3"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
     <TextView
+        android:id="@+id/time4"
         android:layout_width="45dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="252dp"
+        android:layout_marginStart="252dp"
         android:layout_marginTop="435dp"
         android:textAlignment="center"
         android:text="@string/time4"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
     <TextView
+        android:id="@+id/time5"
         android:layout_width="45dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="322dp"
+        android:layout_marginStart="322dp"
         android:layout_marginTop="435dp"
         android:textAlignment="center"
         android:text="@string/time5"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
     <TextView
+        android:id="@+id/future1"
         android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp"
         android:layout_marginTop="515dp"
         android:textAlignment="center"
         android:text="@string/degrees1"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
 
     <TextView
+        android:id="@+id/future2"
         android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="117dp"
+        android:layout_marginStart="117dp"
         android:layout_marginTop="515dp"
         android:textAlignment="center"
         android:text="@string/degrees2"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
     <TextView
+        android:id="@+id/future3"
         android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="187dp"
+        android:layout_marginStart="187dp"
         android:layout_marginTop="515dp"
         android:textAlignment="center"
         android:text="@string/degrees3"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
     <TextView
+        android:id="@+id/future4"
         android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="257dp"
+        android:layout_marginStart="257dp"
         android:layout_marginTop="515dp"
         android:textAlignment="center"
         android:text="@string/degrees4"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
     <TextView
+        android:id="@+id/future5"
         android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="326dp"
+        android:layout_marginStart="326dp"
         android:layout_marginTop="515dp"
         android:textAlignment="center"
         android:text="@string/degrees4"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
 </FrameLayout>

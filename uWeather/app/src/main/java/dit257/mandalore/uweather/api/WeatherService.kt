@@ -35,6 +35,25 @@ abstract class WeatherService(
             val (lon, lat) = CitiesManager.getCoordinates(city)!!
             services.map { it.update(lon, lat) }.forEach { it?.get() }
         }
+
+        /**
+         * Gets the current time, zoned for UTC.
+         *
+         * @return the current time in UTC offset.
+         */
+        fun getCurrentTime(): LocalDateTime {
+            return LocalDateTime.now(ZoneOffset.UTC)
+        }
+
+        /**
+         * Calculates the average temperature from all APIs. Null values are skipped.
+         *
+         * @param time the time to get the average temperature for.
+         * @return the average temperature across all APIs at the given time.
+         */
+        fun getAverageTemperature(time: LocalDateTime): String {
+            return "%.1f°".format(services.map { it.getTemperature(time) }.filterNotNull().average())
+        }
     }
 
     private val responses = TreeMap<LocalDateTime, Double>()
@@ -53,7 +72,7 @@ abstract class WeatherService(
      *
      * @param lon the longitude at which to get the weather.
      * @param lat the latitude at which to get the weather.
-     * @return the [Future] for and parsing the result, or null
+     * @return the [Future] for and parsing the result, or null.
      */
     abstract fun update(lon: String, lat: String): Future<*>?
 
@@ -63,7 +82,7 @@ abstract class WeatherService(
      * @return the temperature from the API for the current time, or null.
      */
     open fun getCurrentTemperature(): Double? {
-        return getTemperature(LocalDateTime.now(ZoneOffset.UTC))
+        return getTemperature(getCurrentTime())
     }
 
     /**
