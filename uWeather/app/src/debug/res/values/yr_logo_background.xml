@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="fab_margin">200dp</dimen>
+    <color name="yr_logo_background">#FFFFFF</color>
 </resources>
