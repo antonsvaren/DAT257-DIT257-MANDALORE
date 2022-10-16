@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dit257.mandalore.uweather.R
-import dit257.mandalore.uweather.databinding.ClimateActionInfoBinding
 import dit257.mandalore.uweather.databinding.ClimateCauseInfoBinding
+
 // This is the page for the climate cause. The only logic in here is the fragment switching
 class ClimateCauseFragment : Fragment() {
 
@@ -19,7 +18,7 @@ class ClimateCauseFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = ClimateCauseInfoBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -27,7 +26,7 @@ class ClimateCauseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonBack.setOnClickListener{
+        binding.buttonBack.setOnClickListener {
             val nextFragment = ClimateFragment()
             val transaction = fragmentManager?.beginTransaction()
             transaction?.replace(R.id.frame_layout, nextFragment)?.commit()

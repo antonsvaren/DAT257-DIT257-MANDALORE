@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-     <item
-        android:title="Weather"
+    <item
         android:id="@+id/weather"
         android:icon="@drawable/weather_icon"
-        />
+        android:title="Weather" />
     <!--
     <item
         android:title="Maps"
@@ -16,10 +15,9 @@
 
 
     <item
-        android:title="Climate"
         android:id="@+id/climate"
         android:icon="@drawable/climate_icon"
-        />
+        android:title="Climate" />
     <!--
     <item
         android:title="Settings"

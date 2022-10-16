@@ -15,7 +15,6 @@
         tools:layout_editor_absoluteX="0dp">
 
 
-
         <ImageButton
             android:id="@+id/climateInfoButton"
             android:layout_width="wrap_content"
@@ -24,6 +23,7 @@
             android:layout_marginTop="90dp"
             android:background="@color/white"
 
+            android:contentDescription="TODO"
             app:srcCompat="@drawable/what_is_climate_change" />
 
         <ImageButton
@@ -33,6 +33,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="290dp"
             android:background="@color/white"
+            android:contentDescription="TODO"
             app:srcCompat="@drawable/cause_of_climate_change" />
 
         <ImageButton
@@ -42,6 +43,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="490dp"
             android:background="@color/white"
+            android:contentDescription="TODO"
             app:srcCompat="@drawable/action_to_focus_on" />
 
     </FrameLayout>
@@ -51,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="center_horizontal|fill_horizontal|top"
+        android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

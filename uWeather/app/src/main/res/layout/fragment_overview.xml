@@ -10,8 +10,8 @@
         android:layout_height="70dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
-        android:textAlignment="center"
         android:text="@string/city"
+        android:textAlignment="center"
         android:textColor="@color/purple_700"
         android:textSize="48sp"
         android:textStyle="bold" />
@@ -22,8 +22,8 @@
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="170dp"
-        android:textAlignment="center"
         android:text="@string/degrees"
+        android:textAlignment="center"
         android:textColor="@color/purple_700"
         android:textSize="48sp"
         android:textStyle="bold" />
@@ -34,8 +34,8 @@
         android:layout_height="25dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="230dp"
-        android:textAlignment="center"
         android:text="@string/weather"
+        android:textAlignment="center"
         android:textColor="@color/purple_700"
         android:textSize="16sp" />
 
@@ -45,8 +45,8 @@
         android:layout_height="25dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="270dp"
-        android:textAlignment="center"
         android:text="@string/high_to_low_degrees"
+        android:textAlignment="center"
         android:textColor="@color/purple_700"
         android:textSize="16sp" />
 
@@ -57,6 +57,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="350dp"
         android:background="@color/purple_900"
+        android:contentDescription="TODO"
         app:srcCompat="@drawable/hourly_forecast" />
 
     <TextView
@@ -93,15 +94,16 @@
         android:textSize="16sp" />
 
     <TextView
-        android:layout_gravity="center_horizontal"
         android:id="@+id/time4"
         android:layout_width="45dp"
         android:layout_height="25dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginStart="62dp"
         android:layout_marginTop="415dp"
         android:text="@string/time4"
         android:textColor="@color/white"
         android:textSize="16sp" />
+
     <TextView
         android:id="@+id/time5"
         android:layout_width="45dp"
@@ -111,14 +113,15 @@
         android:text="@string/time5"
         android:textColor="@color/white"
         android:textSize="16sp" />
+
     <TextView
         android:id="@+id/future1"
         android:layout_width="45dp"
         android:layout_height="25dp"
         android:layout_marginStart="62dp"
         android:layout_marginTop="475dp"
-        android:textAlignment="center"
         android:text="@string/degrees1"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
@@ -128,28 +131,30 @@
         android:layout_height="25dp"
         android:layout_marginStart="119dp"
         android:layout_marginTop="475dp"
-        android:textAlignment="center"
         android:text="@string/degrees2"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp" />
+
     <TextView
         android:id="@+id/future3"
         android:layout_width="45dp"
         android:layout_height="25dp"
         android:layout_marginStart="175dp"
         android:layout_marginTop="475dp"
-        android:textAlignment="center"
         android:text="@string/degrees3"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp" />
+
     <TextView
         android:id="@+id/future4"
         android:layout_width="45dp"
         android:layout_height="25dp"
         android:layout_marginStart="231dp"
         android:layout_marginTop="475dp"
-        android:textAlignment="center"
         android:text="@string/degrees4"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp" />
 

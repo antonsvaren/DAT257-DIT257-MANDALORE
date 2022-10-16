@@ -8,14 +8,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.ui.AppBarConfiguration
+import dit257.mandalore.uweather.api.CITIES
+import dit257.mandalore.uweather.api.setSelectedCity
 import dit257.mandalore.uweather.databinding.ContentMainBinding
-import dit257.mandalore.uweather.manager.CitiesManager
-import dit257.mandalore.uweather.manager.PreferencesManager
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ContentMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,18 +40,16 @@ class MainActivity : AppCompatActivity() {
         //appBarConfiguration = AppBarConfiguration(navController.graph)
         //setupActionBarWithNavController(navController, appBarConfiguration)
 
-        val cities = CitiesManager.getCities()
-
         binding.searchBox.setAdapter(
             ArrayAdapter(
                 this, android.R.layout.simple_dropdown_item_1line,
-                cities.toList()
+                CITIES.keys.toList()
             )
         )
         binding.searchBox.threshold = 1
         binding.searchBox.onItemClickListener =
             AdapterView.OnItemClickListener { parent, _, position, _ ->
-                PreferencesManager.setSelectedCity(
+                setSelectedCity(
                     this@MainActivity,
                     parent?.getItemAtPosition(position).toString()
                 )
@@ -61,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         binding.searchBox.setOnKeyListener { _: View?, keyCode: Int, _: KeyEvent? ->
             if (KeyEvent.KEYCODE_ENTER == keyCode) {
                 if (binding.searchBox.text.isNotEmpty() && !binding.searchBox.adapter.isEmpty)
-                    PreferencesManager.setSelectedCity(
+                    setSelectedCity(
                         this@MainActivity,
                         binding.searchBox.adapter.getItem(0).toString()
                     )
