@@ -39,7 +39,7 @@ class OverviewFragment : Fragment() {
         for (i in 0 until 5) {
             time = time.plusHours(1)
             view.findViewById<TextView>(R.id.time1 + i).text = time.plusHours(2).format(timeFormat)
-            view.findViewById<TextView>(R.id.future1 + i).text =
+            view.findViewById<TextView>(R.id.degrees1 + i).text =
                 (confidenceInterval(getTemperatures(time)))
         }
     }

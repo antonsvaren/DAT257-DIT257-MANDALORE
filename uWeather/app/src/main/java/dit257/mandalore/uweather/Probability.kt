@@ -1,9 +1,6 @@
 package dit257.mandalore.uweather
 
-import kotlin.math.abs
-import kotlin.math.pow
-import kotlin.math.round
-import kotlin.math.sqrt
+import kotlin.math.*
 
 /**
  * We take all the recent temperatures for a specific city and calculating a interval of what the
@@ -18,7 +15,7 @@ fun confidenceInterval(allLastTemps: Sequence<Double>): String {
     val std = sqrt(variance)
     val zAlpha = 2.92
     val confidenceConstant = zAlpha * std / sqrt(count.toDouble())
-    val lower = round(mean - confidenceConstant)
-    val upper = round(mean + confidenceConstant)
+    val lower = (mean - confidenceConstant).roundToInt()
+    val upper = (mean + confidenceConstant).roundToInt()
     return "$lower-$upper°"
 }
