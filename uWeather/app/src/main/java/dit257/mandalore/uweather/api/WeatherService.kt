@@ -118,16 +118,8 @@ fun getCurrentTime(): LocalDateTime {
     return LocalDateTime.now(ZoneOffset.UTC)
 }
 
-/**
- * Calculates the average temperature from all APIs. Null values are skipped.
- *
- * @param time the time to get the average temperature for.
- * @return the average temperature across all APIs at the given time.
- */
-fun getAverageTemperature(time: LocalDateTime): String {
-    return "%.1f°".format(
-        SERVICES.map { it.getTemperature(time) }.filterNotNull().average()
-    )
+fun getTemperatures(time: LocalDateTime): Sequence<Double> {
+    return SERVICES.map { it.getTemperature(time) }.filterNotNull()
 }
 
 val SERVICES = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())

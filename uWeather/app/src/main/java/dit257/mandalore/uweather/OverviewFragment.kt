@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import dit257.mandalore.uweather.api.getAverageTemperature
 import dit257.mandalore.uweather.api.getCurrentTime
 import dit257.mandalore.uweather.api.getSelectedCity
+import dit257.mandalore.uweather.api.getTemperatures
 import dit257.mandalore.uweather.databinding.FragmentOverviewBinding
 import java.time.format.DateTimeFormatter
 
@@ -20,8 +20,7 @@ class OverviewFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
@@ -33,13 +32,15 @@ class OverviewFragment : Fragment() {
 
         binding.city.text = getSelectedCity(view.context)
 
-        val format = DateTimeFormatter.ofPattern("ha")
+        val tempFormat = "%.1f°"
+        val timeFormat = DateTimeFormatter.ofPattern("ha")
         var time = getCurrentTime()
-        binding.degrees.text = getAverageTemperature(time)
+        binding.degrees.text = tempFormat.format(getTemperatures(time).average())
         for (i in 0 until 5) {
             time = time.plusHours(1)
-            view.findViewById<TextView>(R.id.time1 + i).text = time.plusHours(2).format(format)
-            view.findViewById<TextView>(R.id.future1 + i).text = getAverageTemperature(time)
+            view.findViewById<TextView>(R.id.time1 + i).text = time.plusHours(2).format(timeFormat)
+            view.findViewById<TextView>(R.id.future1 + i).text =
+                tempFormat.format(getTemperatures(time).average())
         }
     }
 
