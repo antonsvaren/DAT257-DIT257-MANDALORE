@@ -17,5 +17,9 @@ fun confidenceInterval(allLastTemps: Sequence<Double>): String {
     val confidenceConstant = zAlpha * std / sqrt(count.toDouble())
     val lower = (mean - confidenceConstant).roundToInt()
     val upper = (mean + confidenceConstant).roundToInt()
-    return "$lower-$upper°"
+    if(lower == upper){
+        return "$lower°"
+    }
+    else return "$lower-$upper°"
+
 }
