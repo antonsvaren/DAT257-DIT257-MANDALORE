@@ -2,16 +2,18 @@ package dit257.mandalore.uweather
 
 import android.net.http.HttpResponseCache
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.text.TextUtils.replace
+import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import android.view.Menu
+import android.view.MenuItem
+import androidx.fragment.app.*
+import dit257.mandalore.uweather.databinding.ActivityMainBinding
 import dit257.mandalore.uweather.databinding.ContentMainBinding
-import dit257.mandalore.uweather.manager.CitiesManager
-import dit257.mandalore.uweather.manager.PreferencesManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,17 +25,17 @@ class MainActivity : AppCompatActivity() {
 
         binding = ContentMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(OverviewFragment())
+        replaceFragment(FirstFragment())
 
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.weather -> replaceFragment(OverviewFragment())
-                R.id.climate -> replaceFragment(SecondFragment())
-                else -> {
-                }
-            }
-            true
-        }
+       binding.bottomNavigationView.setOnItemSelectedListener {
+           when(it.itemId){
+               R.id.weather -> replaceFragment(FirstFragment())
+               R.id.climate -> replaceFragment(ClimateFragment())
+               else ->{
+               }
+           }
+           true
+       }
 
 
         setSupportActionBar(binding.toolbar)
@@ -42,40 +44,13 @@ class MainActivity : AppCompatActivity() {
         //appBarConfiguration = AppBarConfiguration(navController.graph)
         //setupActionBarWithNavController(navController, appBarConfiguration)
 
-        val cities = CitiesManager.getCities()
-
-        binding.searchBox.setAdapter(
-            ArrayAdapter(
-                this, android.R.layout.simple_dropdown_item_1line,
-                cities.toList()
-            )
-        )
-        binding.searchBox.threshold = 1
-        binding.searchBox.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, _, position, _ ->
-                PreferencesManager.setSelectedCity(
-                    this@MainActivity,
-                    parent?.getItemAtPosition(position).toString()
-                )
-            }
-        binding.searchBox.setOnKeyListener { _: View?, keyCode: Int, _: KeyEvent? ->
-            if (KeyEvent.KEYCODE_ENTER == keyCode) {
-                if (binding.searchBox.text.isNotEmpty() && !binding.searchBox.adapter.isEmpty)
-                    PreferencesManager.setSelectedCity(
-                        this@MainActivity,
-                        binding.searchBox.adapter.getItem(0).toString()
-                    )
-                return@setOnKeyListener true
-            }
-            false
-        }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    private fun replaceFragment(fragment: Fragment){
 
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.replace(R.id.frame_layout,fragment)
         fragmentTransaction.commit()
     }
 /*
