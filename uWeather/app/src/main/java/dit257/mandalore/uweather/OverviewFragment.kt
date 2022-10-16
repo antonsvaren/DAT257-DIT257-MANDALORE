@@ -40,7 +40,7 @@ class OverviewFragment : Fragment() {
             time = time.plusHours(1)
             view.findViewById<TextView>(R.id.time1 + i).text = time.plusHours(2).format(timeFormat)
             view.findViewById<TextView>(R.id.future1 + i).text =
-                tempFormat.format(getTemperatures(time).average())
+                (confidenceInterval(getTemperatures(time)))
         }
     }
 

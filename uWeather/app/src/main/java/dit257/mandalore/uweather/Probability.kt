@@ -1,5 +1,6 @@
-package dit257.mandalore.uweather.api
+package dit257.mandalore.uweather
 
+import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.round
 import kotlin.math.sqrt
@@ -19,5 +20,5 @@ fun confidenceInterval(allLastTemps: Sequence<Double>): String {
     val confidenceConstant = zAlpha * std / sqrt(count.toDouble())
     val lower = round(mean - confidenceConstant)
     val upper = round(mean + confidenceConstant)
-    return "Temperature will vary between ($lower°C-$upper°C)"
+    return "$lower-$upper°"
 }

@@ -46,11 +46,11 @@
     <string name="time3">11AM</string>
     <string name="time4">12PM</string>
     <string name="time5">13PM</string>
-    <string name="degrees1">15°</string>
-    <string name="degrees2">14°</string>
-    <string name="degrees3">16°</string>
-    <string name="degrees4">15°</string>
-    <string name="degrees5">15°</string>
+    <string name="degrees1">11-12°</string>
+    <string name="degrees2">11-12°</string>
+    <string name="degrees3">11-12°</string>
+    <string name="degrees4">11-12°</string>
+    <string name="degrees5">11-12°</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="smhi">SMHI</string>
     <string name="yr">YR</string>
