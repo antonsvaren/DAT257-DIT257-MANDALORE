@@ -32,14 +32,17 @@ class OverviewFragment : Fragment() {
 
         binding.city.text = getSelectedCity(view.context)
 
-        val uvIndex = SERVICES.map { it.uvIndex }.filterNotNull().average()
-        binding.uvIndex.text = when {
-            uvIndex <= 2 -> "Low"
-            uvIndex <= 5 -> "Moderate"
-            uvIndex <= 7 -> "High"
-            uvIndex <= 10 -> "Very High"
+        val uvIndex = ceil(SERVICES.map { it.uvIndex }.filterNotNull().average()).toInt()
+        binding.uvIndex.text = "$uvIndex\n" + when (uvIndex) {
+            in 0..2 -> "Low"
+            in 3..5 -> "Moderate"
+            in 6..7 -> "High"
+            in 8..10 -> "Very High"
             else -> "Extreme"
         }
+
+        val sunTimeFormat = DateTimeFormatter.ofPattern("HH:mm")
+        binding.sun.text = SUN.joinToString("\n", transform = { it.format(sunTimeFormat) })
 
         val tempFormat = "%.1f°"
         val timeFormat = DateTimeFormatter.ofPattern("HH:00")

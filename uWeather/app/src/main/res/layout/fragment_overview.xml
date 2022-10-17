@@ -189,12 +189,23 @@
         android:id="@+id/uvIndex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Moderate"
-        android:textAlignment="center"
+        android:text="4\nModerate"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        android:layout_marginStart="15dp"
+        android:textSize="20sp"
+        android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/margines"
-        app:layout_constraintTop_toBottomOf="@+id/margines"/>
+        app:layout_constraintEnd_toEndOf="@+id/degrees2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/margines" />
+
+    <TextView
+        android:id="@+id/sun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="07:52\n21:01"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/degrees2"
+        app:layout_constraintTop_toTopOf="@+id/uvIndex" />
 </androidx.constraintlayout.widget.ConstraintLayout>

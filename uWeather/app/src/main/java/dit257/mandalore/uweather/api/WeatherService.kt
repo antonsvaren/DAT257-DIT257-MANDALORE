@@ -15,14 +15,10 @@ import javax.net.ssl.HttpsURLConnection
 /**
  * A generic, unimplemented weather service.
  *
- * @property name the human-readable name for the implemented weather service.
- * @property api the base url for the API sans the request endpoints of the implemented weather
- * service.
+ * @property endpoint TODO
  */
-abstract class WeatherService(
-    val name: String, private val api: String
-) {
-    private val responses = TreeMap<LocalDateTime, Double>()
+abstract class WeatherService(private val endpoint: String) {
+    val responses = TreeMap<LocalDateTime, Double>()
     private val executor = Executors.newSingleThreadExecutor()
     var uvIndex: Double? = null
 
@@ -32,25 +28,6 @@ abstract class WeatherService(
      * @param response the JSON response from the weather API.
      */
     abstract fun parseResponse(response: JSONObject)
-
-    /**
-     * Requests the latest weather from the weather API asynchronously at the given location and
-     * calls [parseResponse] with the result.
-     *
-     * @param lon the longitude at which to get the weather.
-     * @param lat the latitude at which to get the weather.
-     * @return the [Future] for and parsing the result, or null.
-     */
-    abstract fun update(lon: String, lat: String): Future<*>?
-
-    /**
-     * Gets the temperature from the API for the current time if it exists. Override this for mocks.
-     *
-     * @return the temperature from the API for the current time, or null.
-     */
-    open fun getCurrentTemperature(): Double? {
-        return getTemperature(getCurrentTime())
-    }
 
     /**
      * Gets the temperature from the API for the given time if it exists.
@@ -76,13 +53,13 @@ abstract class WeatherService(
      * Sends a request asynchronously to the given endpoint and calls [parseResponse] with the
      * result.
      *
-     * @param endpoint the endpoint of the request added to [api].
+     * @param args TODO
      * @return the [Future] for calling the API and parsing the result.
      */
-    fun request(endpoint: String): Future<*> {
+    fun update(vararg args: Any?): Future<*> {
         uvIndex = null
         return executor.submit {
-            val connection = URL("$api/$endpoint").openConnection() as HttpsURLConnection
+            val connection = URL(endpoint.format(*args)).openConnection() as HttpsURLConnection
             try {
                 // Needed for yr.no; doesn't hurt for other services
                 connection.setRequestProperty(
@@ -108,7 +85,7 @@ abstract class WeatherService(
  */
 fun updateAll(city: String) {
     val (lon, lat) = CITIES[city] ?: return
-    SERVICES.map { it.update(lon, lat) }.forEach { it?.get() }
+    SERVICES.map { it.update(lon, lat) }.forEach { it.get() }
 }
 
 /**
@@ -124,8 +101,8 @@ fun getTemperatures(time: LocalDateTime): Sequence<Double> {
     return SERVICES.map { it.getTemperature(time) }.filterNotNull()
 }
 
-var SUNRISE: LocalDateTime? = null
-val SERVICES = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())
+val SUN = arrayListOf<LocalDateTime>()
+val SERVICES = sequenceOf(OpenMeteoWeatherService(), SMHIWeatherService(), YrWeatherService())
 val CITIES = mapOf(
     Pair("Alingsås", Pair("12.5331", "57.93")),
     Pair("Arboga", Pair("15.8386", "59.3939")),

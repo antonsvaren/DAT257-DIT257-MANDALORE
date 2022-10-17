@@ -4,7 +4,7 @@ import org.json.JSONObject
 import java.util.concurrent.Future
 
 class SMHIWeatherService : WeatherService(
-    "SMHI", "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2"
+    "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/%s/lat/%s/data.json"
 ) {
     override fun parseResponse(response: JSONObject) {
         val timeSeries = response.getJSONArray("timeSeries")
@@ -21,9 +21,5 @@ class SMHIWeatherService : WeatherService(
             }
             time = timeObject.getString("validTime")
         }
-    }
-
-    override fun update(lon: String, lat: String): Future<*> {
-        return request("geotype/point/lon/$lon/lat/$lat/data.json")
     }
 }

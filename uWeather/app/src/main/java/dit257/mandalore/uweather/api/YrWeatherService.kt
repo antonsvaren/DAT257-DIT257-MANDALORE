@@ -4,7 +4,7 @@ import org.json.JSONObject
 import java.util.concurrent.Future
 
 class YrWeatherService :
-    WeatherService("Yr", "https://api.met.no/weatherapi/locationforecast/2.0") {
+    WeatherService("https://api.met.no/weatherapi/locationforecast/2.0/complete?lon=%s&lat=%s") {
     override fun parseResponse(response: JSONObject) {
         val timeSeries = response.getJSONObject("properties").getJSONArray("timeseries")
         for (i in 0 until timeSeries.length()) {
@@ -16,9 +16,5 @@ class YrWeatherService :
             )
             uvIndex = uvIndex ?: details.getDouble("ultraviolet_index_clear_sky")
         }
-    }
-
-    override fun update(lon: String, lat: String): Future<*> {
-        return request("complete?lon=$lon&lat=$lat")
     }
 }
