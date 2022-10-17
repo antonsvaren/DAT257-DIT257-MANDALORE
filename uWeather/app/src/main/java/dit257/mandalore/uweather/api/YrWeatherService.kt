@@ -9,7 +9,9 @@ import java.time.LocalTime
 class YrWeatherService :
     WeatherService("https://api.met.no/weatherapi/locationforecast/2.0/complete?lon=%s&lat=%s") {
     override fun parseResponse(response: JSONObject) {
-        val midnight = LocalDateTime.of(LocalDate.now().plusDays(1), LocalTime.of(0, 0))
+        val morning = LocalDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT)
+        val midnight = morning.plusDays(1)
+
         val timeSeries = response.getJSONObject("properties").getJSONArray("timeseries")
         for (i in 0 until timeSeries.length()) {
             val timeObject = timeSeries.getJSONObject(i)
@@ -18,7 +20,7 @@ class YrWeatherService :
             val time = setTemperature(
                 timeObject.getString("time"), details.getDouble("air_temperature")
             )
-            if (time.isBefore(midnight)) UV_INDEX =
+            if (!time.isBefore(morning) && time.isBefore(midnight)) UV_INDEX =
                 max(UV_INDEX ?: 0.0, details.getDouble("ultraviolet_index_clear_sky"))
         }
     }
