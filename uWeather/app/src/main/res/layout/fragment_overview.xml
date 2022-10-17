@@ -192,6 +192,7 @@
         android:text="SUNRISE   06:30\n\nSUNSET    21:30"
         android:textColor="@color/white"
         android:textSize="16sp"
+        android:lineHeight="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/degrees2"
@@ -201,12 +202,14 @@
         android:id="@+id/uvIndex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:text="4\n\nModerate"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/degrees3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sun" />
+        android:lineHeight="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sun"
+        app:layout_constraintEnd_toStartOf="@+id/degrees2"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
