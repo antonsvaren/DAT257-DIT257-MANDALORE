@@ -1,1 +1,80 @@
+Customer Value and Scope
+the chosen scope of the application under development including the priority of features and for whom you are creating value
 
+- The focus for this last sprint has been pretty much the same as the last. We have focused on bringing value to the 
+-end user, specifically the UI for the application.
+
+the success criteria for the team in terms of what you want to achieve within the project 
+(this can include the application, but also your learning outcomes, your teamwork, or your effort)
+
+-No, it hasn't changed
+
+your user stories in terms of using a standard pattern, acceptance criteria, task breakdown and effort estimation and 
+how this influenced the way you worked and created value
+
+- The estimation didn't really change, as we tried to finish the stories from the last sprint in order to meet up to our MVP.
+- But what did change was how we divided the work and that we worked more closely together. 
+
+
+your acceptance tests, such as how they were performed, with whom, and which value they provided for you and the other stakeholders
+
+- Reviewing each others code, brings value to the person reviewing by giving them insight into more parts of code.(Same as week 40)
+
+the three KPIs you use for monitoring your progress and how you use them to improve your process
+
+- We used the costumer satisfaction in order to figure out what to improve.
+
+Social Contract and Effort
+your social contract, i.e., the rules that define how you work together as a team, how it influenced your work, and how it evolved during the project 
+(this means, of course, you should create one in the first week and continuously update it when the need arrives)
+
+
+- One of our members decided to drop out of the course which in a way broke the social contract by not informing us until we asked ourselves. 
+
+the time you have spent on the course and how it relates to what you delivered (so keep track of your hours so you can describe the current situation)
+
+- We spent more time on the course and worked more together which improve how many tasks/stories we finished.
+- We also spent more time helping each other which removed that some people were stuck on certain tasks. 
+
+
+Design decisions and product structure
+how your design decisions (e.g., choice of APIs, architecture patterns, behaviour) support customer value
+
+- We're trying to use well knows weather services in order to get accurate readings. (API)
+
+
+which technical documentation you use and why (e.g. use cases, interaction diagrams, class diagrams, domain models or component diagrams, text documents)
+
+ 
+- Figma is used to document design decisions.
+
+how you use and update your documentation throughout the sprints
+
+-  Feedback from PO has been used to update figma prototype.
+
+how you ensure code quality and enforce coding standards
+
+- Reviewing pull requests
+- Comments on developed code.
+(Same as week 40)
+
+Application of Scrum
+the roles you have used within the team and their impact on your work
+
+- Stakeholder/PO: Feedback has been considered and impacted our prioritization.(Same as week 40)
+
+the agile practices you have used and their impact on your work
+
+- Sprint planning has made us divide work, retrospective and review has given us areas improve in. Planning poker to evaluate storie points. 
+
+the sprint review and how it relates to your scope and customer value (Did you have a PO, if yes, who?, if no, 
+how did you carry out the review? Did the review result in a re-prioritisation of user stories? 
+How did the reviews relate to your DoD? Did the feedback change your way of working?)
+
+- Yes we have a PO. Prioritized working on the UI more to give more customer value. 
+- We didn't create more user stories as we had some from the last sprint that need to be finished. 
+
+best practices for learning and using new tools and technologies (IDEs, version control, scrum boards etc.; 
+do not only describe which tools you used but focus on how you developed the expertise to use them)
+
+Hasn't been changed.
