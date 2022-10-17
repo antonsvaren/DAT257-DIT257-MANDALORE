@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:background="@color/purple_900"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/hourly_forecast" />
+        app:srcCompat="@drawable/city_hourly_forecast" />
 
     <TextView
         android:id="@+id/margines"
@@ -186,26 +186,28 @@
         app:layout_constraintEnd_toEndOf="@+id/time5" />
 
     <TextView
-        android:id="@+id/uvIndex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4\nModerate"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/degrees2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/margines" />
-
-    <TextView
         android:id="@+id/sun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="07:52\n21:01"
+        android:layout_marginLeft="150dp"
+        android:text="@string/sunrise"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="@+id/degrees2"
-        app:layout_constraintTop_toTopOf="@+id/uvIndex" />
+        tools:layout_editor_absoluteY="754dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="150dp"
+        android:text="@string/sunset"
+        android:textColor="@color/purple_700"
+        android:textSize="16sp"
+    />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
