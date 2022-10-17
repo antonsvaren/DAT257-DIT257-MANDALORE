@@ -33,7 +33,7 @@ class OverviewFragment : Fragment() {
         binding.city.text = getSelectedCity(view.context)
 
         val tempFormat = "%.1f°"
-        val timeFormat = DateTimeFormatter.ofPattern("ha")
+        val timeFormat = DateTimeFormatter.ofPattern("HH:00")
         var time = getCurrentTime()
         binding.degrees.text = tempFormat.format(getTemperatures(time).average())
         for (i in 0 until 5) {
