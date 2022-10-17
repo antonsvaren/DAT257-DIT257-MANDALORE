@@ -10,7 +10,6 @@ import dit257.mandalore.uweather.api.*
 import dit257.mandalore.uweather.databinding.FragmentOverviewBinding
 import java.time.format.DateTimeFormatter
 import kotlin.math.ceil
-import kotlin.math.roundToInt
 
 class OverviewFragment : Fragment() {
     private var _binding: FragmentOverviewBinding? = null
@@ -32,7 +31,7 @@ class OverviewFragment : Fragment() {
 
         binding.city.text = getSelectedCity(view.context)
 
-        val uvIndex = ceil(SERVICES.map { it.uvIndex }.filterNotNull().average()).toInt()
+        val uvIndex = ceil(UV_INDEX ?: return).toInt()
         binding.uvIndex.text = "$uvIndex\n" + when (uvIndex) {
             in 0..2 -> "Low"
             in 3..5 -> "Moderate"

@@ -20,7 +20,6 @@ import javax.net.ssl.HttpsURLConnection
 abstract class WeatherService(private val endpoint: String) {
     val responses = TreeMap<LocalDateTime, Double>()
     private val executor = Executors.newSingleThreadExecutor()
-    var uvIndex: Double? = null
 
     /**
      * Parses a JSON response from the API into [responses].
@@ -45,8 +44,10 @@ abstract class WeatherService(private val endpoint: String) {
      * @param time the raw zoned ISO time for when the data becomes valid.
      * @param temperature the temperature from the API.
      */
-    fun setTemperature(time: String, temperature: Double) {
-        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = temperature
+    fun setTemperature(time: String, temperature: Double): LocalDateTime {
+        val key = LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        responses[key] = temperature
+        return key
     }
 
     /**
@@ -57,7 +58,6 @@ abstract class WeatherService(private val endpoint: String) {
      * @return the [Future] for calling the API and parsing the result.
      */
     fun update(vararg args: Any?): Future<*> {
-        uvIndex = null
         return executor.submit {
             val connection = URL(endpoint.format(*args)).openConnection() as HttpsURLConnection
             try {
@@ -101,6 +101,7 @@ fun getTemperatures(time: LocalDateTime): Sequence<Double> {
     return SERVICES.map { it.getTemperature(time) }.filterNotNull()
 }
 
+var UV_INDEX: Double? = null
 val SUN = arrayListOf<LocalDateTime>()
 val SERVICES = sequenceOf(OpenMeteoWeatherService(), SMHIWeatherService(), YrWeatherService())
 val CITIES = mapOf(
