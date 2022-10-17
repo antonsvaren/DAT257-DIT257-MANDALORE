@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:background="@color/purple_900"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/city_hourly_forecast" />
+        app:srcCompat="@drawable/city_hourly_forecast_v2" />
 
     <TextView
         android:id="@+id/margines"
