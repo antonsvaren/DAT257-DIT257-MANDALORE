@@ -24,6 +24,7 @@ abstract class WeatherService(
 ) {
     private val responses = TreeMap<LocalDateTime, Double>()
     private val executor = Executors.newSingleThreadExecutor()
+    var uvIndex: Double? = null
 
     /**
      * Parses a JSON response from the API into [responses].
@@ -79,6 +80,7 @@ abstract class WeatherService(
      * @return the [Future] for calling the API and parsing the result.
      */
     fun request(endpoint: String): Future<*> {
+        uvIndex = null
         return executor.submit {
             val connection = URL("$api/$endpoint").openConnection() as HttpsURLConnection
             try {
@@ -122,6 +124,7 @@ fun getTemperatures(time: LocalDateTime): Sequence<Double> {
     return SERVICES.map { it.getTemperature(time) }.filterNotNull()
 }
 
+var SUNRISE: LocalDateTime? = null
 val SERVICES = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())
 val CITIES = mapOf(
     Pair("Alingsås", Pair("12.5331", "57.93")),
