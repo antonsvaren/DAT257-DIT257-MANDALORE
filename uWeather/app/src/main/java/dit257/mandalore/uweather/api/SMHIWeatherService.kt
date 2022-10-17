@@ -1,7 +1,6 @@
 package dit257.mandalore.uweather.api
 
 import org.json.JSONObject
-import java.util.concurrent.Future
 
 class SMHIWeatherService : WeatherService(
     "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/%s/lat/%s/data.json"
