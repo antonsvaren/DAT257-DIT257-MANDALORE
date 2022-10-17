@@ -32,16 +32,18 @@ class OverviewFragment : Fragment() {
         binding.city.text = getSelectedCity(view.context)
 
         val uvIndex = ceil(UV_INDEX ?: return).toInt()
-        binding.uvIndex.text = "$uvIndex\n" + when (uvIndex) {
+        val textUVI = when (uvIndex) {
             in 0..2 -> "Low"
             in 3..5 -> "Moderate"
             in 6..7 -> "High"
             in 8..10 -> "Very High"
             else -> "Extreme"
         }
+        binding.uvIndex.text = "$uvIndex\n\n$textUVI"
 
         val sunTimeFormat = DateTimeFormatter.ofPattern("HH:mm")
-        binding.sun.text = SUN.joinToString("\n", transform = { it.format(sunTimeFormat) })
+        binding.sun.text =
+            "SUNRISE   %s\n\nSUNSET    %s".format(*SUN.map { it.format(sunTimeFormat) }.toTypedArray())
 
         val tempFormat = "%.1f°"
         val timeFormat = DateTimeFormatter.ofPattern("HH:00")
