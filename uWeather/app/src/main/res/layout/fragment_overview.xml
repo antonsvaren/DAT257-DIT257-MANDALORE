@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foregroundTint="#3700B2"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="80dp"
+        android:text="Gothenburg"
+        android:textColor="@color/purple_700"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/degrees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/degrees"
+        android:textColor="@color/purple_700"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/weather"
+        android:textColor="@color/purple_700"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/degrees" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_900"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/hourly_forecast" />
+
+    <TextView
+        android:id="@+id/margines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="The temperature prediction has an accuracy level of 90%"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/time1"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/time1"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/time3"
+        app:layout_constraintEnd_toStartOf="@+id/time2" />
+
+    <TextView
+        android:id="@+id/time2"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/time2"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/time3"
+        app:layout_constraintEnd_toStartOf="@+id/time3" />
+
+    <TextView
+        android:id="@+id/time3"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/time3"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/margines"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/time4"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/time4"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/time3"
+        app:layout_constraintStart_toEndOf="@+id/time3" />
+
+    <TextView
+        android:id="@+id/time5"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/time5"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/time4"
+        app:layout_constraintStart_toEndOf="@+id/time4"/>
+
+    <TextView
+        android:id="@+id/degrees1"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/degrees1"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/degrees2"
+        app:layout_constraintEnd_toEndOf="@+id/time1" />
+
+    <TextView
+        android:id="@+id/degrees2"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/degrees2"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/degrees3"
+        app:layout_constraintEnd_toEndOf="@+id/time2" />
+
+    <TextView
+        android:id="@+id/degrees3"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/degrees3"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/margines"
+        app:layout_constraintEnd_toEndOf="@+id/time3"
+        app:layout_constraintTop_toBottomOf="@+id/time3" />
+
+    <TextView
+        android:id="@+id/degrees4"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/degrees4"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/degrees3"
+        app:layout_constraintEnd_toEndOf="@+id/time4" />
+
+    <TextView
+        android:id="@+id/degrees5"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/degrees5"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/degrees3"
+        app:layout_constraintEnd_toEndOf="@+id/time5" />
+</androidx.constraintlayout.widget.ConstraintLayout>
