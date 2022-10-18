@@ -55,4 +55,7 @@
     <string name="smhi">SMHI</string>
     <string name="yr">YR</string>
     <string name="mock">MOCK</string>
+    <string name="sunrise">06:30</string>
+    <string name="sunset">16:30</string>
+
 </resources>

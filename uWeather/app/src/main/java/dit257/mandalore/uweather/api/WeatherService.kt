@@ -15,13 +15,9 @@ import javax.net.ssl.HttpsURLConnection
 /**
  * A generic, unimplemented weather service.
  *
- * @property name the human-readable name for the implemented weather service.
- * @property api the base url for the API sans the request endpoints of the implemented weather
- * service.
+ * @property endpoint the endpoint to call to update this service.
  */
-abstract class WeatherService(
-    val name: String, private val api: String
-) {
+abstract class WeatherService(private val endpoint: String) {
     private val responses = TreeMap<LocalDateTime, Double>()
     private val executor = Executors.newSingleThreadExecutor()
 
@@ -31,25 +27,6 @@ abstract class WeatherService(
      * @param response the JSON response from the weather API.
      */
     abstract fun parseResponse(response: JSONObject)
-
-    /**
-     * Requests the latest weather from the weather API asynchronously at the given location and
-     * calls [parseResponse] with the result.
-     *
-     * @param lon the longitude at which to get the weather.
-     * @param lat the latitude at which to get the weather.
-     * @return the [Future] for and parsing the result, or null.
-     */
-    abstract fun update(lon: String, lat: String): Future<*>?
-
-    /**
-     * Gets the temperature from the API for the current time if it exists. Override this for mocks.
-     *
-     * @return the temperature from the API for the current time, or null.
-     */
-    open fun getCurrentTemperature(): Double? {
-        return getTemperature(getCurrentTime())
-    }
 
     /**
      * Gets the temperature from the API for the given time if it exists.
@@ -66,21 +43,24 @@ abstract class WeatherService(
      *
      * @param time the raw zoned ISO time for when the data becomes valid.
      * @param temperature the temperature from the API.
+     * @return the parsed [LocalDateTime] object.
      */
-    fun setTemperature(time: String, temperature: Double) {
-        responses[LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)] = temperature
+    fun setTemperature(time: String, temperature: Double): LocalDateTime {
+        val key = LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        responses[parseTime(time)] = temperature
+        return key
     }
 
     /**
      * Sends a request asynchronously to the given endpoint and calls [parseResponse] with the
      * result.
      *
-     * @param endpoint the endpoint of the request added to [api].
+     * @param args the longitude and latitude [String]s passed into [endpoint].
      * @return the [Future] for calling the API and parsing the result.
      */
-    fun request(endpoint: String): Future<*> {
+    fun update(vararg args: Any?): Future<*> {
         return executor.submit {
-            val connection = URL("$api/$endpoint").openConnection() as HttpsURLConnection
+            val connection = URL(endpoint.format(*args)).openConnection() as HttpsURLConnection
             try {
                 // Needed for yr.no; doesn't hurt for other services
                 connection.setRequestProperty(
@@ -106,7 +86,7 @@ abstract class WeatherService(
  */
 fun updateAll(city: String) {
     val (lon, lat) = CITIES[city] ?: return
-    SERVICES.map { it.update(lon, lat) }.forEach { it?.get() }
+    SERVICES.map { it.update(lon, lat) }.forEach { it.get() }
 }
 
 /**
@@ -118,11 +98,30 @@ fun getCurrentTime(): LocalDateTime {
     return LocalDateTime.now(ZoneOffset.UTC)
 }
 
+/**
+ * Gets all non-null temperatures across every service.
+ *
+ * @param time the time with which to search for valid temperatures.
+ * @return all non-null temperatures across every service.
+ */
 fun getTemperatures(time: LocalDateTime): Sequence<Double> {
     return SERVICES.map { it.getTemperature(time) }.filterNotNull()
 }
 
-val SERVICES = sequenceOf(MockWeatherService(), SMHIWeatherService(), YrWeatherService())
+/**
+ * Parses the current zoned time into a [LocalDateTime] object.
+ *
+ * @param time the raw zoned ISO time.
+ * @return the parsed [LocalDateTime] object.
+ */
+fun parseTime(time: String): LocalDateTime {
+    return LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+}
+
+var UV_INDEX: Double? = null
+var SUNTIMES = emptyList<LocalDateTime>()
+
+val SERVICES = sequenceOf(OpenMeteoWeatherService(), SMHIWeatherService(), YrWeatherService())
 val CITIES = mapOf(
     Pair("Alingsås", Pair("12.5331", "57.93")),
     Pair("Arboga", Pair("15.8386", "59.3939")),

@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import dit257.mandalore.uweather.api.getCurrentTime
-import dit257.mandalore.uweather.api.getSelectedCity
-import dit257.mandalore.uweather.api.getTemperatures
+import dit257.mandalore.uweather.api.*
 import dit257.mandalore.uweather.databinding.FragmentOverviewBinding
 import java.time.format.DateTimeFormatter
+import kotlin.math.ceil
 
 class OverviewFragment : Fragment() {
     private var _binding: FragmentOverviewBinding? = null
@@ -31,6 +30,20 @@ class OverviewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.city.text = getSelectedCity(view.context)
+
+        val uvIndex = ceil(UV_INDEX ?: 0.0).toInt()
+        val textUVI = when (uvIndex) {
+            in 0..2 -> "Low"
+            in 3..5 -> "Moderate"
+            in 6..7 -> "High"
+            in 8..10 -> "Very High"
+            else -> "Extreme"
+        }
+        binding.uvIndex.text = "$uvIndex\n\n$textUVI"
+
+        val sunTimeFormat = DateTimeFormatter.ofPattern("HH:mm")
+        val (sunrise, sunset) = SUNTIMES.map { it.format(sunTimeFormat) }
+        binding.sun.text = "SUNRISE   $sunrise\n\nSUNSET    $sunset"
 
         val tempFormat = "%.1f°"
         val timeFormat = DateTimeFormatter.ofPattern("HH:00")
