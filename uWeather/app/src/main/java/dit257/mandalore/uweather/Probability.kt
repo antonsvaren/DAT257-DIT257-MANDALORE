@@ -1,5 +1,5 @@
 package dit257.mandalore.uweather
-
+import dit257.mandalore.uweather.api.SERVICES
 import kotlin.math.*
 
 /**
@@ -13,7 +13,10 @@ fun confidenceInterval(allLastTemps: Sequence<Double>): String {
     val mean = allLastTemps.average()
     val variance = allLastTemps.sumOf { (it - mean).pow(2) } / (count - 1)
     val std = sqrt(variance)
-    val zAlpha = 2.92
+    val tDistributionList = ArrayList<Double>()
+    tDistributionList.addAll(listOf(6.314, 2.92, 2.353, 2.132, 2.015, 1.943, 1.1895, 1.86, 1.833,1.812))
+    val numberOfServices = SERVICES.count()
+    val zAlpha = tDistributionList.get(numberOfServices-2)
     val confidenceConstant = zAlpha * std / sqrt(count.toDouble())
     val lower = (mean - confidenceConstant).roundToInt()
     val upper = (mean + confidenceConstant).roundToInt()
@@ -21,5 +24,4 @@ fun confidenceInterval(allLastTemps: Sequence<Double>): String {
         return "$lower°"
     }
     else return "$lower-$upper°"
-
 }
