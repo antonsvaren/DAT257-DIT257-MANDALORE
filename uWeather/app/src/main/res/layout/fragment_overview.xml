@@ -53,6 +53,52 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/city_hourly_forecast_v2" />
 
+    <ImageView
+        android:id="@+id/weather1"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/degrees3"
+        app:layout_constraintEnd_toEndOf="@+id/time1"
+        app:layout_constraintStart_toStartOf="@+id/time1"
+        app:layout_constraintTop_toTopOf="@+id/time3"
+        app:srcCompat="@drawable/cloudy" />
+
+    <ImageView
+        android:id="@+id/weather2"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/weather1"
+        app:layout_constraintEnd_toEndOf="@+id/time2"
+        app:layout_constraintStart_toStartOf="@+id/time2"
+        app:srcCompat="@drawable/cloudy" />
+
+    <ImageView
+        android:id="@+id/weather3"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/weather1"
+        app:layout_constraintEnd_toEndOf="@+id/time3"
+        app:layout_constraintStart_toStartOf="@+id/time3"
+        app:srcCompat="@drawable/cloudy" />
+
+    <ImageView
+        android:id="@+id/weather4"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/weather1"
+        app:layout_constraintEnd_toEndOf="@+id/time4"
+        app:layout_constraintStart_toStartOf="@+id/time4"
+        app:srcCompat="@drawable/cloudy" />
+
+    <ImageView
+        android:id="@+id/weather5"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/weather1"
+        app:layout_constraintEnd_toEndOf="@+id/time5"
+        app:layout_constraintStart_toStartOf="@+id/time5"
+        app:srcCompat="@drawable/cloudy" />
+
     <TextView
         android:id="@+id/margines"
         android:layout_width="wrap_content"

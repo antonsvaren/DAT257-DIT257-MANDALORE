@@ -1,9 +1,11 @@
 package dit257.mandalore.uweather
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import dit257.mandalore.uweather.api.*
@@ -26,6 +28,7 @@ class OverviewFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("DiscouragedApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -49,11 +52,17 @@ class OverviewFragment : Fragment() {
         val timeFormat = DateTimeFormatter.ofPattern("HH:00")
         var time = getCurrentTime()
         binding.degrees.text = tempFormat.format(getTemperatures(time).average())
+        binding.textView.text = "Clear"
         for (i in 0 until 5) {
             time = time.plusHours(1)
             view.findViewById<TextView>(R.id.time1 + i).text = time.plusHours(2).format(timeFormat)
             view.findViewById<TextView>(R.id.degrees1 + i).text =
                 (confidenceInterval(getTemperatures(time)))
+            view.findViewById<ImageView>(R.id.weather1 + i).setImageResource(
+                resources.getIdentifier(
+                    WEATHER.lowerEntry(time)?.value, "drawable", view.context.packageName
+                )
+            )
         }
     }
 

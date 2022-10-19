@@ -15,11 +15,13 @@ class YrWeatherService :
         val timeSeries = response.getJSONObject("properties").getJSONArray("timeseries")
         for (i in 0 until timeSeries.length()) {
             val timeObject = timeSeries.getJSONObject(i)
-            val details =
-                timeObject.getJSONObject("data").getJSONObject("instant").getJSONObject("details")
+            val data = timeObject.getJSONObject("data")
+            val details = data.getJSONObject("instant").getJSONObject("details")
             val time = setTemperature(
                 timeObject.getString("time"), details.getDouble("air_temperature")
             )
+            WEATHER[time] =
+                data.getJSONObject("next_1_hours").getJSONObject("summary").getString("symbol_code")
             if (!time.isBefore(morning) && time.isBefore(midnight)) UV_INDEX =
                 max(UV_INDEX ?: 0.0, details.getDouble("ultraviolet_index_clear_sky"))
         }

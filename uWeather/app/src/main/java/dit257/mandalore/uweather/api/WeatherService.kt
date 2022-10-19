@@ -120,6 +120,7 @@ fun parseTime(time: String): LocalDateTime {
 
 var UV_INDEX: Double? = null
 var SUNTIMES = emptyList<LocalDateTime>()
+var WEATHER = TreeMap<LocalDateTime, String>()
 
 val SERVICES = sequenceOf(OpenMeteoWeatherService(), SMHIWeatherService(), YrWeatherService())
 val CITIES = mapOf(
