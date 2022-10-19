@@ -54,12 +54,12 @@ class OverviewFragment : Fragment() {
         val timeFormat = DateTimeFormatter.ofPattern("HH:00")
         var time = getCurrentTime()
         binding.degrees.text = tempFormat.format(getTemperatures(time).average())
-        binding.textView.text = LEGEND[getMapInfo(WEATHER, time)?.substringBefore('_')]
+        binding.weather.text = LEGEND[getMapInfo(WEATHER, time)?.substringBefore('_')]
         for (i in 0 until 5) {
             time = time.plusHours(1)
             view.findViewById<TextView>(R.id.time1 + i).text = time.plusHours(2).format(timeFormat)
             view.findViewById<TextView>(R.id.degrees1 + i).text =
-                (confidenceInterval(getTemperatures(time)))
+                confidenceInterval(getTemperatures(time))
 
             val key = getMapInfo(WEATHER, time)
             view.findViewById<ImageView>(R.id.weather1 + i)

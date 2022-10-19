@@ -13,7 +13,7 @@ import kotlin.math.sqrt
  */
 fun confidenceInterval(allLastTemps: Sequence<Double>): String {
     val stats = SummaryStatistics().also { allLastTemps.forEach(it::addValue) }
-    if (stats.n < 1) return "NaN"
+    if (stats.n < 1) return ""
     var lower = stats.mean.roundToInt()
     var upper = lower
     if (stats.n > 1) {
@@ -23,5 +23,5 @@ fun confidenceInterval(allLastTemps: Sequence<Double>): String {
         upper = (stats.mean + confidenceConstant).roundToInt()
     }
 
-    return if (lower == upper) "$lower°" else "$lower-$upper°"
+    return if (lower == upper) "$lower°\n" else "$lower°\n$upper°"
 }

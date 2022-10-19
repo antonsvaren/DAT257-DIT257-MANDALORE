@@ -67,11 +67,11 @@ Powering Past Coal Alliance: Countries, investors, utilities and cities are amon
     <string name="time3">11AM</string>
     <string name="time4">12PM</string>
     <string name="time5">13PM</string>
-    <string name="degrees1">11-12°</string>
-    <string name="degrees2">11-12°</string>
-    <string name="degrees3">11-12°</string>
-    <string name="degrees4">11-12°</string>
-    <string name="degrees5">11-12°</string>
+    <string name="degrees1">-11°\n-12°</string>
+    <string name="degrees2">11°\n12°</string>
+    <string name="degrees3">1°\n12°</string>
+    <string name="degrees4">11°\n12°</string>
+    <string name="degrees5">11°\n12°</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="smhi">SMHI</string>
     <string name="yr">YR</string>

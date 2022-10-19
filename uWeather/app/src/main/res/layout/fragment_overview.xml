@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Gothenburg"
+        android:text="@string/city"
         android:textAlignment="center"
         android:textColor="@color/purple_700"
         android:textSize="48sp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/city" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/weather"
@@ -55,12 +55,12 @@
 
     <ImageView
         android:id="@+id/weather1"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="@+id/degrees3"
+        android:layout_width="203dp"
+        android:layout_height="58dp"
+        app:layout_constraintBottom_toTopOf="@+id/degrees1"
         app:layout_constraintEnd_toEndOf="@+id/time1"
         app:layout_constraintStart_toStartOf="@+id/time1"
-        app:layout_constraintTop_toTopOf="@+id/time3"
+        app:layout_constraintTop_toBottomOf="@+id/time1"
         app:srcCompat="@drawable/cloudy" />
 
     <ImageView
@@ -182,7 +182,8 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/degrees2"
-        app:layout_constraintEnd_toEndOf="@+id/time1" />
+        app:layout_constraintEnd_toEndOf="@+id/time1"
+        app:layout_constraintStart_toStartOf="@+id/time1" />
 
     <TextView
         android:id="@+id/degrees2"
@@ -200,11 +201,12 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/degrees3"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/margines"
+        app:layout_constraintBottom_toBottomOf="@+id/margines"
         app:layout_constraintEnd_toEndOf="@+id/time3"
         app:layout_constraintTop_toBottomOf="@+id/time3" />
 
