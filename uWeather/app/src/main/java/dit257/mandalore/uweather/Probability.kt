@@ -1,6 +1,7 @@
 package dit257.mandalore.uweather
 
-import kotlin.math.pow
+import org.apache.commons.math3.distribution.TDistribution
+import org.apache.commons.math3.stat.descriptive.SummaryStatistics
 import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
@@ -11,17 +12,15 @@ import kotlin.math.sqrt
  * choosing.
  */
 fun confidenceInterval(allLastTemps: Sequence<Double>): String {
-    val size = allLastTemps.count()
-    val mean = allLastTemps.average()
-
-    var lower = mean.roundToInt()
+    val stats = SummaryStatistics().also { allLastTemps.forEach(it::addValue) }
+    if (stats.n < 1) return "NaN"
+    var lower = stats.mean.roundToInt()
     var upper = lower
-    if (size > 1) {
-        val variance = allLastTemps.map { (it - mean).pow(2) }.average()
-        val zAlpha = arrayOf(6.314, 2.92)[size - 2]
-        val confidenceConstant = zAlpha * sqrt(variance / size)
-        lower = (mean - confidenceConstant).roundToInt()
-        upper = (mean + confidenceConstant).roundToInt()
+    if (stats.n > 1) {
+        val zAlpha = TDistribution(null, stats.n - 1.0).inverseCumulativeProbability(0.95)
+        val confidenceConstant = zAlpha * sqrt(stats.variance / stats.n)
+        lower = (stats.mean - confidenceConstant).roundToInt()
+        upper = (stats.mean + confidenceConstant).roundToInt()
     }
 
     return if (lower == upper) "$lower°" else "$lower-$upper°"
