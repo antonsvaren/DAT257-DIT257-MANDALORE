@@ -45,24 +45,29 @@ class OverviewFragment : Fragment() {
         binding.uvIndex.text = "$uvIndex\n\n$textUVI"
 
         val sunTimeFormat = DateTimeFormatter.ofPattern("HH:mm")
-        val (sunrise, sunset) = SUNTIMES.map { it.format(sunTimeFormat) }
-        binding.sun.text = "SUNRISE   $sunrise\n\nSUNSET    $sunset"
+        if (SUNTIMES.isNotEmpty()) {
+            val (sunrise, sunset) = SUNTIMES.map { it.format(sunTimeFormat) }
+            binding.sun.text = "SUNRISE   $sunrise\n\nSUNSET    $sunset"
+        }
 
         val tempFormat = "%.1f°"
         val timeFormat = DateTimeFormatter.ofPattern("HH:00")
         var time = getCurrentTime()
         binding.degrees.text = tempFormat.format(getTemperatures(time).average())
-        binding.textView.text = "Clear"
+        binding.textView.text = LEGEND[getMapInfo(WEATHER, time)?.substringBefore('_')]
         for (i in 0 until 5) {
             time = time.plusHours(1)
             view.findViewById<TextView>(R.id.time1 + i).text = time.plusHours(2).format(timeFormat)
             view.findViewById<TextView>(R.id.degrees1 + i).text =
                 (confidenceInterval(getTemperatures(time)))
-            view.findViewById<ImageView>(R.id.weather1 + i).setImageResource(
-                resources.getIdentifier(
-                    WEATHER.lowerEntry(time)?.value, "drawable", view.context.packageName
-                )
-            )
+
+            val key = getMapInfo(WEATHER, time)
+            view.findViewById<ImageView>(R.id.weather1 + i)
+                .setImageResource(RESOURCE_CACHE.getOrPut(key ?: continue) {
+                    resources.getIdentifier(
+                        key, "drawable", view.context.packageName
+                    )
+                })
         }
     }
 
@@ -71,3 +76,5 @@ class OverviewFragment : Fragment() {
         _binding = null
     }
 }
+
+val RESOURCE_CACHE = HashMap<String, Int>()

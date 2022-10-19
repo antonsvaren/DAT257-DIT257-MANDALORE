@@ -18,28 +18,17 @@ import javax.net.ssl.HttpsURLConnection
  * @property endpoint the endpoint to call to update this service.
  */
 abstract class WeatherService(private val endpoint: String) {
-    private val responses = TreeMap<LocalDateTime, Double>()
-    private val executor = Executors.newSingleThreadExecutor()
+    val temperatures = TreeMap<LocalDateTime, Double>()
 
     /**
-     * Parses a JSON response from the API into [responses].
+     * Parses a JSON response from the API into [temperatures].
      *
      * @param response the JSON response from the weather API.
      */
     abstract fun parseResponse(response: JSONObject)
 
     /**
-     * Gets the temperature from the API for the given time if it exists.
-     *
-     * @param time the time to get the temperature for.
-     * @return the temperature from the API for the given time, or null.
-     */
-    fun getTemperature(time: LocalDateTime): Double? {
-        return responses.lowerEntry(time)?.value
-    }
-
-    /**
-     * Sets the data in [responses] after parsing the given time into a [LocalDateTime] object.
+     * Sets the data in [temperatures] after parsing the given time into a [LocalDateTime] object.
      *
      * @param time the raw zoned ISO time for when the data becomes valid.
      * @param temperature the temperature from the API.
@@ -47,7 +36,7 @@ abstract class WeatherService(private val endpoint: String) {
      */
     fun setTemperature(time: String, temperature: Double): LocalDateTime {
         val key = LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)
-        responses[parseTime(time)] = temperature
+        temperatures[parseTime(time)] = temperature
         return key
     }
 
@@ -59,7 +48,7 @@ abstract class WeatherService(private val endpoint: String) {
      * @return the [Future] for calling the API and parsing the result.
      */
     fun update(vararg args: Any?): Future<*> {
-        return executor.submit {
+        return EXECUTOR.submit {
             val connection = URL(endpoint.format(*args)).openConnection() as HttpsURLConnection
             try {
                 // Needed for yr.no; doesn't hurt for other services
@@ -105,7 +94,7 @@ fun getCurrentTime(): LocalDateTime {
  * @return all non-null temperatures across every service.
  */
 fun getTemperatures(time: LocalDateTime): Sequence<Double> {
-    return SERVICES.map { it.getTemperature(time) }.filterNotNull()
+    return SERVICES.map { getMapInfo(it.temperatures, time) }.filterNotNull()
 }
 
 /**
@@ -118,11 +107,17 @@ fun parseTime(time: String): LocalDateTime {
     return LocalDateTime.parse(time, DateTimeFormatter.ISO_ZONED_DATE_TIME)
 }
 
+fun <T> getMapInfo(map: TreeMap<LocalDateTime, T>, time: LocalDateTime): T? {
+    return map.lowerEntry(time)?.value
+}
+
 var UV_INDEX: Double? = null
 var SUNTIMES = emptyList<LocalDateTime>()
-var WEATHER = TreeMap<LocalDateTime, String>()
+val WEATHER = TreeMap<LocalDateTime, String>()
+val LEGEND = HashMap<String, String>()
 
 val SERVICES = sequenceOf(OpenMeteoWeatherService(), SMHIWeatherService(), YrWeatherService())
+val EXECUTOR = Executors.newFixedThreadPool(SERVICES.count())!!
 val CITIES = mapOf(
     Pair("Alingsås", Pair("12.5331", "57.93")),
     Pair("Arboga", Pair("15.8386", "59.3939")),

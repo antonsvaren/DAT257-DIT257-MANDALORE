@@ -20,10 +20,12 @@ class YrWeatherService :
             val time = setTemperature(
                 timeObject.getString("time"), details.getDouble("air_temperature")
             )
-            WEATHER[time] =
+            if (data.has("next_1_hours")) WEATHER[time] =
                 data.getJSONObject("next_1_hours").getJSONObject("summary").getString("symbol_code")
             if (!time.isBefore(morning) && time.isBefore(midnight)) UV_INDEX =
                 max(UV_INDEX ?: 0.0, details.getDouble("ultraviolet_index_clear_sky"))
         }
+
+        WeatherLegendService().update().get()
     }
 }
