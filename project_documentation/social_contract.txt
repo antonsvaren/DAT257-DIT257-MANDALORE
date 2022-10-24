@@ -2,8 +2,8 @@ Social Contract
 
 * No meetings on weekends
 * Try for RL meetings adjacent in time to classes.
-* Sprint start meetings on Friday afternoons typically
-* Sprint end meetings on Friday mornings typically
+* Sprint start meetings on Monday afternoons typically
+* Sprint end meetings on Monday mornings typically
 * Typically virtual meetings
 
 * If one sees a message, try to respond fairly quickly (~15 min), 
@@ -11,10 +11,10 @@ Social Contract
 
 * Free to choose pair programming or individual programming.
 
-* Unit testing strategy: TBD
+* Unit testing strategy: None right now
 
 
-* we will have sprinte review and retrospective at 13.00-14.00 on every comming friday
+* we will have sprinte review and retrospective after the supervision sessions on every comming Monday
 * Sprint reviews and retrospective meetings
 	consists of two parts
 	Sprint Review: ~15 min and
@@ -33,7 +33,7 @@ Social Contract
 	
 	One person takes notes that will be upladed to the repo and linked to in the assignment report.
 
-* we will have sprinte planning at 14.00-15.00 on every comming friday, during which we 
+* we will have sprinte planning on every Monday after then supervision, during which we 
 	* review the Product Backlog ~5 min
 
 	* Groom the top items
@@ -45,7 +45,7 @@ Social Contract
 
 	* preliminary distribute tasks to all members, to ensure all have something to work on.
 
-* we will have "daily" scrums on tuesday and thurdays from 9.00 to 9.15
+* If we feel a need, we will have "daily" scrums on tuesday and thurdays from 9.00 to 9.15
 	during "daily" scrums each person presents in about 2 min.
 	* What have I done recently
 	* What do I plan to do next
@@ -54,6 +54,10 @@ Social Contract
 * we will start meetings at the specified time and late commers will be miss the beginning
 
 * When we don't have anything to do or we don't know what to do, we report that in Discord tin order to let other help explain or find meaningful tasks
+
+* It is okay if we can't participate as much for some of the sprints, but we need to tell the team if that is the case.
+* If we're not able to participate for more than two weeks because of unlegitimate reason, the team can see it as the person is 
+	dropping out of the project
 
 Tools:
 * version control: GitHub 
