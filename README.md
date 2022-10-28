@@ -9,7 +9,7 @@ Simple weather app for GU/Chalmers course.
 - [Sprint Retrospectives & Team Reflections](project_documentation/Sprint%20Team%20reflection)
 - [Social Contract](project_documentation/social_contract.txt)
 - [Designs & Project Scope](Project%20scope)
-- [Final Report](...)
+- [Final Report](Final%20Report%20-%20Mandalore.pdf)
 - [Source Code](uWeather)
 
 ## Who's Who:
